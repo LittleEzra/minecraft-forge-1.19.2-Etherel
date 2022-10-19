@@ -23,3 +23,4 @@ run
 
 # Files from Forge MDK
 forge*changelog.txt
+/src/main/resources/assets/etherel/textures/item/etherel_sap.png

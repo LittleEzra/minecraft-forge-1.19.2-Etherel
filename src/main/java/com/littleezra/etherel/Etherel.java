@@ -1,5 +1,7 @@
 package com.littleezra.etherel;
 
+import com.littleezra.etherel.block.ModBlocks;
+import com.littleezra.etherel.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
@@ -32,6 +34,9 @@ public class Etherel
     public Etherel()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
