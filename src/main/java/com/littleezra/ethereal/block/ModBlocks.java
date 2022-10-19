@@ -1,7 +1,7 @@
-package com.littleezra.etherel.block;
+package com.littleezra.ethereal.block;
 
-import com.littleezra.etherel.Etherel;
-import com.littleezra.etherel.item.ModItems;
+import com.littleezra.ethereal.Ethereal;
+import com.littleezra.ethereal.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -18,16 +18,16 @@ import java.util.function.Supplier;
 public class ModBlocks
 {
     public static final DeferredRegister<Block> BLOCKS =
-            DeferredRegister.create(ForgeRegistries.BLOCKS, Etherel.MODID);
+            DeferredRegister.create(ForgeRegistries.BLOCKS, Ethereal.MODID);
 
 
-    public static final RegistryObject<Block> ETHEREL_SAP_BLOCK = registerBlock("etherel_sap_block",
+    public static final RegistryObject<Block> ETHEREL_SAP_BLOCK = registerBlock("ethereal_sap_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.GLASS)
                     .strength(5f).requiresCorrectToolForDrops()), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
-    public static final RegistryObject<Block> ETHEREL_PLATING = registerBlock("etherel_plating",
+    public static final RegistryObject<Block> ETHEREL_PLATING = registerBlock("ethereal_plating",
             () -> new Block(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
-                    .strength(50f).requiresCorrectToolForDrops()), CreativeModeTab.TAB_BUILDING_BLOCKS);
+                    .strength(7f).requiresCorrectToolForDrops().explosionResistance(1400f)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab)

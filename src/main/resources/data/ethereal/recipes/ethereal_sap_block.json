@@ -1,0 +1,15 @@
+{
+    "type":  "minecraft:crafting_shape",
+    "pattern": [
+    "##",
+    "##"
+    ],
+    "key":{
+        "#":{
+            "item": "etherel:etherel_sap"
+        }
+    },
+    "result": {
+        "item": "etherel:etherel_sap_block"
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "etherel:etherel_sap"
+  },
+  "base": {
+    "item": "minecraft:iron_block"
+  },
+  "result": {
+    "item": "etherel:etherel_plating"
+  }
+}
