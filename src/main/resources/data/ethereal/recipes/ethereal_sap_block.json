@@ -1,15 +1,16 @@
 {
-    "type":  "minecraft:crafting_shape",
-    "pattern": [
-    "##",
-    "##"
-    ],
-    "key":{
-        "#":{
-            "item": "etherel:etherel_sap"
+    "type": "minecraft:crafting_shaped",
+    "key": {
+        "#": {
+            "item": "ethereal:ethereal_sap"
         }
     },
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
     "result": {
-        "item": "etherel:etherel_sap_block"
+        "item": "ethereal:ethereal_sap_block"
     }
 }

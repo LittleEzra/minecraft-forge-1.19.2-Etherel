@@ -2,6 +2,9 @@ package com.littleezra.ethereal;
 
 import com.littleezra.ethereal.block.ModBlocks;
 import com.littleezra.ethereal.item.ModItems;
+import com.littleezra.ethereal.sound.ModSounds;
+import com.littleezra.ethereal.world.feature.ModConfiguredFeatures;
+import com.littleezra.ethereal.world.feature.ModPlacedFeatures;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -25,6 +28,10 @@ public class Ethereal
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModSounds.register(modEventBus);
+
+        ModConfiguredFeatures.register(modEventBus);
+        ModPlacedFeatures.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

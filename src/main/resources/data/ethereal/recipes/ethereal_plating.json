@@ -1,12 +1,20 @@
 {
-  "type": "minecraft:smithing",
-  "addition": {
-    "item": "etherel:etherel_sap"
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "ethereal:ethereal_sap"
+    },
+    "/": {
+      "item": "minecraft:iron_block"
+    }
   },
-  "base": {
-    "item": "minecraft:iron_block"
-  },
+  "pattern": [
+    "###",
+    "#/#",
+    "###"
+  ],
   "result": {
-    "item": "etherel:etherel_plating"
+    "item": "ethereal:ethereal_plating",
+    "count": 8
   }
 }

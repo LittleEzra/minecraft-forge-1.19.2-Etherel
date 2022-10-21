@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "ethereal:ethereal_sap"
+    },
+    "/": {
+      "item": "minecraft:music_disc_otherside"
+    }
+  },
+  "pattern": [
+    "###",
+    "#/#",
+    "###"
+  ],
+  "result": {
+    "item": "ethereal:music_disc_aether"
+  }
+}

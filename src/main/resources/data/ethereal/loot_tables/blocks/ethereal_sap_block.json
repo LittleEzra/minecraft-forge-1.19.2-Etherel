@@ -6,15 +6,15 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "etherel:etherel_sap"
+          "name": "ethereal:ethereal_sap"
         }
       ],
       "functions": [
         {
           "function": "minecraft:set_count",
           "count": {
-            "min": 2,
-            "max": 4
+            "min": 7,
+            "max": 9
           }
         }
       ]

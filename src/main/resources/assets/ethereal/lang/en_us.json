@@ -1,0 +1,15 @@
+{
+  "item.ethereal.ethereal_sap": "Ethereal Sap",
+  "item.ethereal.music_disc_aether": "Music Disc",
+  "item.ethereal.ethereal_concentrate": "Ethereal Concentrate",
+
+
+  "block.ethereal.ethereal_sap_block": "Block of Ethereal Sap",
+  "block.ethereal.ethereal_plating": "Ethereal Plating",
+  "block.ethereal.chiseled_ethereal_plating": "Chiseled Ethereal Plating",
+  "block.ethereal.ethereal_bricks": "Ethereal Bricks",
+  "block.ethereal.ethereal_torch": "Ethereal Torch",
+  "block.ethereal.ethereal_spike": "Ethereal Spike",
+
+  "itemGroup.etherealtab": "Ethereal"
+}

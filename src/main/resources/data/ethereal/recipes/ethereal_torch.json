@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "ethereal:ethereal_sap"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    },
+    "o": {
+      "item": "minecraft:coal"
+    }
+  },
+  "pattern": [
+    "o",
+    "/",
+    "#"
+  ],
+  "result": {
+    "item": "ethereal:ethereal_torch",
+    "count": 4
+  }
+}

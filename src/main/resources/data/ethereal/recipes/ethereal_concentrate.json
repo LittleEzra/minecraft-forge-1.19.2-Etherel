@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "ethereal:ethereal_sap"
+    },
+    "/": {
+      "item": "minecraft:glowstone_dust"
+    }
+  },
+  "pattern": [
+    "###",
+    "#/#",
+    "###"
+  ],
+  "result": {
+    "item": "ethereal:ethereal_concentrate"
+  }
+}

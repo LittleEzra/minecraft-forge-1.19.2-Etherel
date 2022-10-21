@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "ethereal:ethereal_plating"
+  },
+  "result": "ethereal:chiseled_ethereal_plating"
+}

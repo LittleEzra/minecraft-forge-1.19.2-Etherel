@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "ethereal:ethereal_sap"
+    },
+    "/": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "#",
+    "#",
+    "/"
+  ],
+  "result": {
+    "item": "ethereal:ethereal_spike",
+    "count": 1
+  }
+}
