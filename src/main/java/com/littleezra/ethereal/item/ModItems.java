@@ -33,7 +33,10 @@ public class ModItems
             () -> new StandingAndWallBlockItem(ModBlocks.ETHEREAL_TORCH.get(), ModBlocks.ETHEREAL_WALL_TORCH.get(), (new Item.Properties()).tab(CreativeModeTab.TAB_DECORATIONS)));
 
     public static final RegistryObject<Item> ETHEREAL_SPIKE = ITEMS.register("ethereal_spike",
-            () -> new BlockItem(ModBlocks.ETHEREAL_SPIKE.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
+            () -> new BlockItem(ModBlocks.ETHEREAL_SPIKE.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+
+    public static final RegistryObject<Item> GHAST_SNARE = ITEMS.register("ghast_snare",
+            () -> new BlockItem(ModBlocks.GHAST_SNARE.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
 
 
     public static void register(IEventBus eventBus)

@@ -9,12 +9,11 @@
     }
   },
   "pattern": [
-    "#",
-    "#",
-    "/"
+    "# #",
+    " / "
   ],
   "result": {
-    "item": "ethereal:ethereal_spike",
+    "item": "ethereal:ghast_snare",
     "count": 1
   }
 }

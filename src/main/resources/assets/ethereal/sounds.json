@@ -25,42 +25,98 @@
 
   "block.ethereal_sap.break": {
     "sounds": [
-      {
-        "name": "ethereal:block/ethereal_sap_break0"
-      },
-      {
-        "name": "ethereal:block/ethereal_sap_break1"
-      },
-      {
-        "name": "ethereal:block/ethereal_sap_break2"
-      }
+      { "name": "ethereal:block/ethereal_sap_break0" },
+      { "name": "ethereal:block/ethereal_sap_break1" },
+      { "name": "ethereal:block/ethereal_sap_break2" },
+      { "name": "ethereal:block/ethereal_sap_break3" },
+      { "name": "ethereal:block/ethereal_sap_break4" }
     ]
   },
   "block.ethereal_sap.step": {
     "sounds": [
       {
-        "name": "ethereal:block/ethereal_sap_step"
+        "name": "ethereal:block/ethereal_sap_step0"
       }
     ]
   },
   "block.ethereal_sap.place": {
     "sounds": [
-      { "name": "ethereal:block/ethereal_sap_place" },
+      { "name": "ethereal:block/ethereal_sap_place0" },
       { "name": "ethereal:block/ethereal_sap_place1" },
-      { "name": "ethereal:block/ethereal_sap_place2" }
+      { "name": "ethereal:block/ethereal_sap_place2" },
+      { "name": "ethereal:block/ethereal_sap_place3" }
     ]
   },
   "block.ethereal_sap.hit": {
     "sounds": [
-      {
-        "name": "ethereal:block/ethereal_sap_hit"
-      }
+      { "name": "ethereal:block/ethereal_sap_hit0" },
+      { "name": "ethereal:block/ethereal_sap_hit1" }
     ]
   },
   "block.ethereal_sap.fall": {
     "sounds": [
-      { "name": "ethereal:block/ethereal_sap_fall" },
-      { "name": "ethereal:block/ethereal_sap_fall1" }
+      { "name": "ethereal:block/ethereal_sap_fall0" }
+    ]
+  },
+
+  "block.ethereal_spike.reset": {
+    "sounds": [
+      {
+        "name": "ethereal:block/ethereal_spike_reset"
+      }
+    ]
+  },
+
+
+  "block.ethereal_plating.break": {
+    "sounds": [
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_break0" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_break1" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_break2" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_break2", "pitch": 0.9 },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_break3" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_break3", "pitch": 0.9 }
+    ]
+  },
+  "block.ethereal_plating.step": {
+    "sounds": [
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step0" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step1" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step2" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step3" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step4" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step5" }
+    ]
+  },
+  "block.ethereal_plating.place": {
+    "sounds": [
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_break0" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_break1" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_break2" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_break2", "pitch": 0.9 },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_break3" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_break3", "pitch": 0.9 }
+    ]
+  },
+  "block.ethereal_plating.hit": {
+    "sounds": [
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step0" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step1" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step2" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step3" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step4" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step5" }
+    ]
+  },
+  "block.ethereal_plating.fall": {
+    "sounds": [
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step0" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step1" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step2" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step3" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step4" },
+      { "name": "ethereal:block/ethereal_plating/ethereal_plating_step5" }
     ]
   }
+
 }

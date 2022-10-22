@@ -35,6 +35,20 @@ public class ModSounds {
             ModSounds.ETHEREAL_SAP_FALL
     );
 
+    public static final RegistryObject<SoundEvent> ETHEREAL_PLATING_BREAK = registerSoundEvent("block.ethereal_plating.break");
+    public static final RegistryObject<SoundEvent> ETHEREAL_PLATING_STEP =  registerSoundEvent("block.ethereal_plating.step");
+    public static final RegistryObject<SoundEvent> ETHEREAL_PLATING_PLACE = registerSoundEvent("block.ethereal_plating.place");
+    public static final RegistryObject<SoundEvent> ETHEREAL_PLATING_HIT =   registerSoundEvent("block.ethereal_plating.hit");
+    public static final RegistryObject<SoundEvent> ETHEREAL_PLATING_FALL =  registerSoundEvent("block.ethereal_plating.fall");
+
+    public static final ForgeSoundType ETHEREAL_PLATING = new ForgeSoundType(1f, 1f,
+            ModSounds.ETHEREAL_PLATING_BREAK,
+            ModSounds.ETHEREAL_PLATING_STEP,
+            ModSounds.ETHEREAL_PLATING_PLACE,
+            ModSounds.ETHEREAL_PLATING_HIT,
+            ModSounds.ETHEREAL_PLATING_FALL
+    );
+
     public static void register(IEventBus eventBus)
     {
         SOUND_EVENTS.register(eventBus);

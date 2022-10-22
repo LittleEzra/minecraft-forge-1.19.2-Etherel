@@ -1,9 +1,6 @@
 {
   "replace": false,
   "values": [
-    "ethereal:ethereal_sap_block",
-    "ethereal:ethereal_plating",
-    "ethereal:chiseled_ethereal_plating",
-    "ethereal:ethereal_bricks"
+    "ethereal:ethereal_sap_block"
   ]
 }

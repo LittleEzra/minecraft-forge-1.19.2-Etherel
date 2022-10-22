@@ -1,10 +1,7 @@
 package com.littleezra.ethereal.block;
 
 import com.littleezra.ethereal.Ethereal;
-import com.littleezra.ethereal.block.custom.EtherealSapBlock;
-import com.littleezra.ethereal.block.custom.EtherealSpikeBlock;
-import com.littleezra.ethereal.block.custom.EtherealTorchBlock;
-import com.littleezra.ethereal.block.custom.EtherealWallTorchBlock;
+import com.littleezra.ethereal.block.custom.*;
 import com.littleezra.ethereal.item.ModItems;
 import com.littleezra.ethereal.sound.ModSounds;
 import net.minecraft.core.particles.ParticleOptions;
@@ -31,20 +28,20 @@ public class ModBlocks
 
 
     public static final RegistryObject<Block> ETHEREAL_SAP_BLOCK = registerBlock("ethereal_sap_block",
-            () -> new GlassBlock(BlockBehaviour.Properties.of(Material.GLASS)
-                    .strength(5f).requiresCorrectToolForDrops().noOcclusion().noCollission().sound(ModSounds.ETHEREAL_SAP_BLOCK)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+            () -> new EtherealSapBlock(BlockBehaviour.Properties.of(Material.GLASS)
+                    .strength(4f).requiresCorrectToolForDrops().noOcclusion().noCollission().sound(ModSounds.ETHEREAL_SAP_BLOCK).explosionResistance(1400f)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<Block> ETHEREAL_PLATING = registerBlock("ethereal_plating",
             () -> new Block(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
-                    .strength(7f).requiresCorrectToolForDrops().explosionResistance(1400f)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+                    .strength(5f).requiresCorrectToolForDrops().explosionResistance(1400f).sound(ModSounds.ETHEREAL_PLATING)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<Block> CHISELED_ETHEREAL_PLATING = registerBlock("chiseled_ethereal_plating",
             () -> new Block(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
-                    .strength(7f).requiresCorrectToolForDrops().explosionResistance(1400f)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+                    .strength(5f).requiresCorrectToolForDrops().explosionResistance(1400f).sound(ModSounds.ETHEREAL_PLATING)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<Block> ETHEREAL_BRICKS = registerBlock("ethereal_bricks",
             () -> new Block(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
-                    .strength(7f).requiresCorrectToolForDrops().explosionResistance(1400f)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+                    .strength(5f).requiresCorrectToolForDrops().explosionResistance(1400f).sound(ModSounds.ETHEREAL_PLATING)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static ToIntFunction<BlockState> lightLevel = BlockState -> 15;
 
@@ -58,7 +55,11 @@ public class ModBlocks
 
     public static final RegistryObject<Block> ETHEREAL_SPIKE = BLOCKS.register("ethereal_spike",
             () -> new EtherealSpikeBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
-                    .strength(7f).requiresCorrectToolForDrops().explosionResistance(1400f).sound(SoundType.SCULK).noCollission().noOcclusion()));
+                    .strength(7f).requiresCorrectToolForDrops().explosionResistance(1400f).sound(ModSounds.ETHEREAL_PLATING).noCollission().noOcclusion()));
+
+    public static final RegistryObject<Block> GHAST_SNARE = BLOCKS.register("ghast_snare",
+            () -> new GhastSnareBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
+                    .strength(7f).requiresCorrectToolForDrops().explosionResistance(1400f).sound(ModSounds.ETHEREAL_PLATING).noCollission().noOcclusion()));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab)
     {

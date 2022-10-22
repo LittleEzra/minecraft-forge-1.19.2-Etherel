@@ -1,17 +1,17 @@
 package com.littleezra.ethereal.block.custom;
 
 import com.littleezra.ethereal.sound.ModSounds;
-import net.minecraft.client.particle.Particle;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -19,7 +19,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -28,16 +27,17 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class EtherealSpikeBlock extends Block {
+public class GhastSnareBlock extends Block {
 
     public static final BooleanProperty ACTIVATED = BooleanProperty.create("activated");
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    public static final DamageSource ETHEREAL_SPIKE_DAMAGE = new DamageSource("ethereal_spike_damage");
 
-    public static final VoxelShape ACTIVATED_SHAPE = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D);
-    public static final VoxelShape DEACTIVATED_SHAPE = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 2.0D, 10.0D);
+    public static final VoxelShape ACTIVATED_SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 10.0D, 12.0D);
+    public static final VoxelShape DEACTIVATED_SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 4.0D, 14.0D);
 
-    public EtherealSpikeBlock(Properties properties) {
+    public static final MobEffectInstance mobEffectInstance = new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 5, 4);
+
+    public GhastSnareBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any()
                 .setValue(ACTIVATED, false)
@@ -69,7 +69,11 @@ public class EtherealSpikeBlock extends Block {
     public void entityInside(BlockState state, Level level, BlockPos blockPos, Entity entity) {
         if (entity instanceof LivingEntity livingEntity && state.getValue(ACTIVATED))
         {
-            livingEntity.hurt(ETHEREAL_SPIKE_DAMAGE, 3f);
+            if (mobEffectInstance.getEffect().isInstantenous()) {
+                mobEffectInstance.getEffect().applyInstantenousEffect(null, null, livingEntity, mobEffectInstance.getAmplifier(), 1.0D);
+            } else {
+                livingEntity.addEffect(new MobEffectInstance(mobEffectInstance));
+            }
         }
 
         if (!state.getValue(ACTIVATED) && entity instanceof LivingEntity)
@@ -97,11 +101,12 @@ public class EtherealSpikeBlock extends Block {
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
 
-        if (!level.isClientSide){
+        if (!level.isClientSide && hand == InteractionHand.MAIN_HAND){
             if (state.getValue(ACTIVATED) && !state.getValue(POWERED)){
 
                 level.setBlock(blockPos, state.setValue(ACTIVATED, false), 3);
                 level.playSound(null, blockPos, ModSounds.ETHEREAL_SPIKE_RESET.get(), SoundSource.BLOCKS, 1F, 1F);
+                player.swing(hand);
             }
         }
 

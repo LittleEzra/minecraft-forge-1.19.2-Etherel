@@ -10,6 +10,9 @@
   "block.ethereal.ethereal_bricks": "Ethereal Bricks",
   "block.ethereal.ethereal_torch": "Ethereal Torch",
   "block.ethereal.ethereal_spike": "Ethereal Spike",
+  "block.ethereal.ghast_snare": "Ghast Snare",
 
-  "itemGroup.etherealtab": "Ethereal"
+  "itemGroup.etherealtab": "Ethereal",
+
+  "death.attack.ethereal_spike_damage": "%1$s was stabbed to death"
 }

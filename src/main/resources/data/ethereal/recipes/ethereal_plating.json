@@ -9,12 +9,12 @@
     }
   },
   "pattern": [
-    "###",
+    " # ",
     "#/#",
-    "###"
+    " # "
   ],
   "result": {
     "item": "ethereal:ethereal_plating",
-    "count": 8
+    "count": 1
   }
 }
