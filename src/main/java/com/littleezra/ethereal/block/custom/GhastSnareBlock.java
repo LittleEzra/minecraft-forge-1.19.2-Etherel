@@ -2,10 +2,14 @@ package com.littleezra.ethereal.block.custom;
 
 import com.littleezra.ethereal.sound.ModSounds;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -23,25 +27,31 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.eventbus.api.IEventBus;
 
 public class GhastSnareBlock extends Block {
 
     public static final BooleanProperty ACTIVATED = BooleanProperty.create("activated");
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
+    public static final BooleanProperty NATURAL = BooleanProperty.create("natural");
 
     public static final VoxelShape ACTIVATED_SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 10.0D, 12.0D);
     public static final VoxelShape DEACTIVATED_SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 4.0D, 14.0D);
 
-    public static final MobEffectInstance mobEffectInstance = new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 5, 4);
+    public static final MobEffectInstance mobEffectInstance = new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 6);
+
+
 
     public GhastSnareBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any()
                 .setValue(ACTIVATED, false)
                 .setValue(POWERED, false)
+                .setValue(NATURAL, false)
         );
     }
 
@@ -62,51 +72,69 @@ public class GhastSnareBlock extends Block {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(ACTIVATED, POWERED);
+        builder.add(ACTIVATED, POWERED, NATURAL);
     }
 
     @Override
     public void entityInside(BlockState state, Level level, BlockPos blockPos, Entity entity) {
-        if (entity instanceof LivingEntity livingEntity && state.getValue(ACTIVATED))
-        {
-            if (mobEffectInstance.getEffect().isInstantenous()) {
-                mobEffectInstance.getEffect().applyInstantenousEffect(null, null, livingEntity, mobEffectInstance.getAmplifier(), 1.0D);
-            } else {
-                livingEntity.addEffect(new MobEffectInstance(mobEffectInstance));
-            }
-        }
 
-        if (!state.getValue(ACTIVATED) && entity instanceof LivingEntity)
+        if (!state.getValue(ACTIVATED) && entity instanceof LivingEntity livingEntity)
         {
             if (!entity.isShiftKeyDown()){
-                level.setBlock(blockPos, state.setValue(ACTIVATED, true), 3);
-                level.playSound(null, blockPos, ModSounds.ETHEREAL_SPIKE_ACTIVATE.get(), SoundSource.BLOCKS, 1F, 1F);
-                spawnParticles(level, blockPos);
+                activate(state, level, blockPos);
+
+                if (mobEffectInstance.getEffect().isInstantenous()) {
+                    mobEffectInstance.getEffect().applyInstantenousEffect(null, null, livingEntity, mobEffectInstance.getAmplifier(), 1.0D);
+                } else {
+                    livingEntity.addEffect(new MobEffectInstance(mobEffectInstance));
+                }
+
             }
         }
     }
 
     // Used to spawn the crit particles when extending
-    private void spawnParticles(Level level, BlockPos blockPos)
+    private static void spawnParticles(Level level, BlockPos blockPos)
     {
-        level.addParticle(ParticleTypes.CRIT,
-                blockPos.getX() + 0.5d,
-                blockPos.getY() + 6.25d,
-                blockPos.getZ() + 0.5d,
-                .1d,
-                .15d,
-                .1d);
+        if (level instanceof ServerLevel serverLevel)
+        {
+            serverLevel.sendParticles(ParticleTypes.CRIT,
+                    blockPos.getX() + .5d,
+                    blockPos.getZ() + .5d,
+                    blockPos.getY() + .5d,
+                    10,
+                    0d,
+                    0.25d,
+                    0d,
+                    0.25d);
+        } else
+        {
+            level.addParticle(ParticleTypes.CRIT,
+                    blockPos.getX() + .5d,
+                    blockPos.getY() + .5d,
+                    blockPos.getZ() + .5d,
+                    0d,
+                    0.25d,
+                    0d);
+        }
+    }
+    private static void activate(BlockState state, Level level, BlockPos blockPos){
+        level.setBlock(blockPos, state.setValue(ACTIVATED, true), 3);
+        level.playSound(null, blockPos, ModSounds.ETHEREAL_SPIKE_ACTIVATE.get(), SoundSource.BLOCKS, 1F, 1F);
+        spawnParticles(level, blockPos);
+    }
+    private static void reset(BlockState state, Level level, BlockPos blockPos)
+    {
+        level.setBlock(blockPos, state.setValue(ACTIVATED, false), 3);
+        level.playSound(null, blockPos, ModSounds.ETHEREAL_SPIKE_RESET.get(), SoundSource.BLOCKS, 1F, 1F);
     }
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
 
-        if (!level.isClientSide && hand == InteractionHand.MAIN_HAND){
+        if (!level.isClientSide && hand == InteractionHand.MAIN_HAND && !state.getValue(NATURAL)){
             if (state.getValue(ACTIVATED) && !state.getValue(POWERED)){
-
-                level.setBlock(blockPos, state.setValue(ACTIVATED, false), 3);
-                level.playSound(null, blockPos, ModSounds.ETHEREAL_SPIKE_RESET.get(), SoundSource.BLOCKS, 1F, 1F);
-                player.swing(hand);
+                reset(state, level, blockPos);
             }
         }
 

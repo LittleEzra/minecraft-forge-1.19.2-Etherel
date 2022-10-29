@@ -32,6 +32,7 @@ public class EtherealSpikeBlock extends Block {
 
     public static final BooleanProperty ACTIVATED = BooleanProperty.create("activated");
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
+    public static final BooleanProperty NATURAL = BooleanProperty.create("natural");
     public static final DamageSource ETHEREAL_SPIKE_DAMAGE = new DamageSource("ethereal_spike_damage");
 
     public static final VoxelShape ACTIVATED_SHAPE = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D);
@@ -41,7 +42,8 @@ public class EtherealSpikeBlock extends Block {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any()
                 .setValue(ACTIVATED, false)
-                .setValue(POWERED, false)
+                .setValue(POWERED,   false)
+                .setValue(NATURAL,   false)
         );
     }
 
@@ -62,46 +64,67 @@ public class EtherealSpikeBlock extends Block {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(ACTIVATED, POWERED);
+        builder.add(ACTIVATED, POWERED, NATURAL);
     }
 
     @Override
     public void entityInside(BlockState state, Level level, BlockPos blockPos, Entity entity) {
         if (entity instanceof LivingEntity livingEntity && state.getValue(ACTIVATED))
         {
-            livingEntity.hurt(ETHEREAL_SPIKE_DAMAGE, 3f);
+            livingEntity.hurt(ETHEREAL_SPIKE_DAMAGE, 2f);
+            livingEntity.knockback(blockPos.getX(),blockPos.getY(),blockPos.getZ());
         }
 
         if (!state.getValue(ACTIVATED) && entity instanceof LivingEntity)
         {
             if (!entity.isShiftKeyDown()){
-                level.setBlock(blockPos, state.setValue(ACTIVATED, true), 3);
-                level.playSound(null, blockPos, ModSounds.ETHEREAL_SPIKE_ACTIVATE.get(), SoundSource.BLOCKS, 1F, 1F);
-                spawnParticles(level, blockPos);
+                activate(state, level, blockPos);
             }
         }
     }
 
     // Used to spawn the crit particles when extending
-    private void spawnParticles(Level level, BlockPos blockPos)
+    private static void spawnParticles(Level level, BlockPos blockPos)
     {
-        level.addParticle(ParticleTypes.CRIT,
-                blockPos.getX() + 0.5d,
-                blockPos.getY() + 6.25d,
-                blockPos.getZ() + 0.5d,
-                .1d,
-                .15d,
-                .1d);
+        if (level instanceof ServerLevel serverLevel)
+        {
+            serverLevel.sendParticles(ParticleTypes.CRIT,
+                    blockPos.getX() + .5d,
+                    blockPos.getZ() + .5d,
+                    blockPos.getY() + .5d,
+                    10,
+                    0d,
+                    0.25d,
+                    0d,
+                    0.25d);
+        } else
+        {
+            level.addParticle(ParticleTypes.CRIT,
+                    blockPos.getX() + .5d,
+                    blockPos.getY() + .5d,
+                    blockPos.getZ() + .5d,
+                    0d,
+                    0.25d,
+                    0d);
+        }
+    }
+    private static void activate(BlockState state, Level level, BlockPos blockPos){
+        level.setBlock(blockPos, state.setValue(ACTIVATED, true), 3);
+        level.playSound(null, blockPos, ModSounds.ETHEREAL_SPIKE_ACTIVATE.get(), SoundSource.BLOCKS, 1F, 1F);
+        spawnParticles(level, blockPos);
+    }
+    private static void reset(BlockState state, Level level, BlockPos blockPos)
+    {
+        level.setBlock(blockPos, state.setValue(ACTIVATED, false), 3);
+        level.playSound(null, blockPos, ModSounds.ETHEREAL_SPIKE_RESET.get(), SoundSource.BLOCKS, 1F, 1F);
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-
-        if (!level.isClientSide){
+    public InteractionResult use(BlockState state, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult)
+    {
+        if (!level.isClientSide && hand == InteractionHand.MAIN_HAND && !state.getValue(NATURAL)){
             if (state.getValue(ACTIVATED) && !state.getValue(POWERED)){
-
-                level.setBlock(blockPos, state.setValue(ACTIVATED, false), 3);
-                level.playSound(null, blockPos, ModSounds.ETHEREAL_SPIKE_RESET.get(), SoundSource.BLOCKS, 1F, 1F);
+                reset(state, level, blockPos);
             }
         }
 
@@ -109,7 +132,8 @@ public class EtherealSpikeBlock extends Block {
     }
 
     @Override
-    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos blockPos, boolean p_57552_) {
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos blockPos, boolean p_57552_)
+    {
         if (level.getBlockState(pos.below()).isAir()){
             level.destroyBlock(pos, true);
         }

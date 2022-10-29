@@ -2,11 +2,13 @@ package com.littleezra.ethereal.item;
 
 import com.littleezra.ethereal.Ethereal;
 import com.littleezra.ethereal.block.ModBlocks;
+import com.littleezra.ethereal.entity.ModEntityTypes;
 import com.littleezra.ethereal.item.custom.AetherMusicDiscItem;
 import com.littleezra.ethereal.item.custom.EtherealConcentrateItem;
 import com.littleezra.ethereal.sound.ModSounds;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -37,6 +39,9 @@ public class ModItems
 
     public static final RegistryObject<Item> GHAST_SNARE = ITEMS.register("ghast_snare",
             () -> new BlockItem(ModBlocks.GHAST_SNARE.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+
+    public static final RegistryObject<Item> CNITHEREA_SPAWN_EGG = ITEMS.register("cnitherea_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.CNITHEREA, 0x6495d0, 0xa3e1ff, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 
     public static void register(IEventBus eventBus)

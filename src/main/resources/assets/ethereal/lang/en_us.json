@@ -2,6 +2,7 @@
   "item.ethereal.ethereal_sap": "Ethereal Sap",
   "item.ethereal.music_disc_aether": "Music Disc",
   "item.ethereal.ethereal_concentrate": "Ethereal Concentrate",
+  "item.ethereal.cnitherea_spawn_egg": "Cnitherea Spawn Egg",
 
 
   "block.ethereal.ethereal_sap_block": "Block of Ethereal Sap",
@@ -9,7 +10,7 @@
   "block.ethereal.chiseled_ethereal_plating": "Chiseled Ethereal Plating",
   "block.ethereal.ethereal_bricks": "Ethereal Bricks",
   "block.ethereal.ethereal_torch": "Ethereal Torch",
-  "block.ethereal.ethereal_spike": "Ethereal Spike",
+  "block.ethereal.ethereal_spike": "Sap Trap",
   "block.ethereal.ghast_snare": "Ghast Snare",
 
   "itemGroup.etherealtab": "Ethereal",

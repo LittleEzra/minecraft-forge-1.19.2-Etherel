@@ -19,6 +19,8 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> ETHEREAL_SPIKE_ACTIVATE = registerSoundEvent("block.ethereal_spike.activate");
     public static final RegistryObject<SoundEvent> ETHEREAL_SPIKE_RESET = registerSoundEvent("block.ethereal_spike.reset");
 
+    public static final RegistryObject<SoundEvent> ETHEREAL_JELLYFISH_MOVE = registerSoundEvent("entity.ethereal_jellyfish.move");
+
     // Ethereal Sap Block sounds
 
     public static final RegistryObject<SoundEvent> ETHEREAL_SAP_BREAK = registerSoundEvent("block.ethereal_sap.break");

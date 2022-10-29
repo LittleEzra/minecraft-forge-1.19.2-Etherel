@@ -25,45 +25,37 @@
 
   "block.ethereal_sap.break": {
     "sounds": [
-      { "name": "ethereal:block/ethereal_sap_break0" },
-      { "name": "ethereal:block/ethereal_sap_break1" },
-      { "name": "ethereal:block/ethereal_sap_break2" },
-      { "name": "ethereal:block/ethereal_sap_break3" },
-      { "name": "ethereal:block/ethereal_sap_break4" }
+      { "name": "ethereal:block/ethereal_sap/ethereal_sap_break0" },
+      { "name": "ethereal:block/ethereal_sap/ethereal_sap_break1" },
+      { "name": "ethereal:block/ethereal_sap/ethereal_sap_break2" },
+      { "name": "ethereal:block/ethereal_sap/ethereal_sap_break3" },
+      { "name": "ethereal:block/ethereal_sap/ethereal_sap_break4" }
     ]
   },
   "block.ethereal_sap.step": {
     "sounds": [
       {
-        "name": "ethereal:block/ethereal_sap_step0"
+        "name": "ethereal:block/ethereal_sap/ethereal_sap_step0"
       }
     ]
   },
   "block.ethereal_sap.place": {
     "sounds": [
-      { "name": "ethereal:block/ethereal_sap_place0" },
-      { "name": "ethereal:block/ethereal_sap_place1" },
-      { "name": "ethereal:block/ethereal_sap_place2" },
-      { "name": "ethereal:block/ethereal_sap_place3" }
+      { "name": "ethereal:block/ethereal_sap/ethereal_sap_place0" },
+      { "name": "ethereal:block/ethereal_sap/ethereal_sap_place1" },
+      { "name": "ethereal:block/ethereal_sap/ethereal_sap_place2" },
+      { "name": "ethereal:block/ethereal_sap/ethereal_sap_place3" }
     ]
   },
   "block.ethereal_sap.hit": {
     "sounds": [
-      { "name": "ethereal:block/ethereal_sap_hit0" },
-      { "name": "ethereal:block/ethereal_sap_hit1" }
+      { "name": "ethereal:block/ethereal_sap/ethereal_sap_hit0" },
+      { "name": "ethereal:block/ethereal_sap/ethereal_sap_hit1" }
     ]
   },
   "block.ethereal_sap.fall": {
     "sounds": [
-      { "name": "ethereal:block/ethereal_sap_fall0" }
-    ]
-  },
-
-  "block.ethereal_spike.reset": {
-    "sounds": [
-      {
-        "name": "ethereal:block/ethereal_spike_reset"
-      }
+      { "name": "ethereal:block/ethereal_sap/ethereal_sap_fall0" }
     ]
   },
 
