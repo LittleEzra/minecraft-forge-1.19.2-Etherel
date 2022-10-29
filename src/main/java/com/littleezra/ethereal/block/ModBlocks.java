@@ -4,11 +4,15 @@ import com.littleezra.ethereal.Ethereal;
 import com.littleezra.ethereal.block.custom.*;
 import com.littleezra.ethereal.item.ModItems;
 import com.littleezra.ethereal.sound.ModSounds;
+import net.minecraft.client.resources.sounds.Sound;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -60,6 +64,130 @@ public class ModBlocks
     public static final RegistryObject<Block> GHAST_SNARE = BLOCKS.register("ghast_snare",
             () -> new GhastSnareBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
                     .strength(7f).requiresCorrectToolForDrops().explosionResistance(1400f).sound(ModSounds.ETHEREAL_PLATING).noCollission().noOcclusion()));
+
+    public static final RegistryObject<Block> RICH_LOG = registerBlock("rich_log", () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD)
+            .strength(3f).sound(SoundType.WOOD)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> RICH_WOOD = registerBlock("rich_wood", () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD)
+            .strength(3f).sound(SoundType.WOOD)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> RICH_PLANKS = registerBlock("rich_planks", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD)
+            .strength(3f).sound(SoundType.WOOD)){
+        @Override
+        public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return true;
+        }
+
+        @Override
+        public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5;
+        }
+
+        @Override
+        public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5;
+        }
+    }, CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> TREATED_PLANKS = registerBlock("treated_planks", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD)
+            .strength(3f).sound(SoundType.WOOD)){
+        @Override
+        public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return true;
+        }
+
+        @Override
+        public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5;
+        }
+
+        @Override
+        public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5;
+        }
+    }, CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> CHISELED_RICH_WOOD = registerBlock("chiseled_rich_wood", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD)
+            .strength(3f).sound(SoundType.WOOD)){
+        @Override
+        public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return true;
+        }
+
+        @Override
+        public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5;
+        }
+
+        @Override
+        public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5;
+        }
+    }, CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> TRIMMED_RICH_WOOD = registerBlock("trimmed_rich_wood", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD)
+            .strength(3f).sound(SoundType.WOOD)){
+        @Override
+        public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return true;
+        }
+
+        @Override
+        public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5;
+        }
+
+        @Override
+        public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5;
+        }
+    }, CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> SOBRIETY_TOTEM = registerBlock("sobriety_totem", () -> new TotemHeadBlock(BlockBehaviour.Properties.of(Material.WOOD)
+            .strength(5f).sound(SoundType.WOOD)){
+        @Override
+        public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return true;
+        }
+
+        @Override
+        public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5;
+        }
+
+        @Override
+        public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5;
+        }
+    }, CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> SURPRISE_TOTEM = registerBlock("surprise_totem", () -> new TotemHeadBlock(BlockBehaviour.Properties.of(Material.WOOD)
+            .strength(5f).sound(SoundType.WOOD)){
+        @Override
+        public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return true;
+        }
+
+        @Override
+        public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5;
+        }
+
+        @Override
+        public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5;
+        }
+    }, CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> SPITE_TOTEM = registerBlock("spite_totem", () -> new TotemHeadBlock(BlockBehaviour.Properties.of(Material.WOOD)
+            .strength(5f).sound(SoundType.WOOD)){
+        @Override
+        public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return true;
+        }
+
+        @Override
+        public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5;
+        }
+
+        @Override
+        public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+            return 5;
+        }
+    }, CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab)
     {

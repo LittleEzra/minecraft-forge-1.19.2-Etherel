@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "ethereal:block/sobriety_totem",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "ethereal:block/sobriety_totem"
+    },
+    "facing=south": {
+      "model": "ethereal:block/sobriety_totem",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ethereal:block/sobriety_totem",
+      "y": 270
+    }
+  }
+}

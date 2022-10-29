@@ -1,0 +1,7 @@
+{
+  "parent": "ethereal:block/cube_column",
+  "textures": {
+    "end": "ethereal:block/rich_log",
+    "side": "ethereal:block/rich_log"
+  }
+}

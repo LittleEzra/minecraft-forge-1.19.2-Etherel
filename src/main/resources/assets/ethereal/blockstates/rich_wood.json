@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "ethereal:block/rich_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "ethereal:block/rich_wood"
+    },
+    "axis=z": {
+      "model": "ethereal:block/rich_wood",
+      "x": 90
+    }
+  }
+}

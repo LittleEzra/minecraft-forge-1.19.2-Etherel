@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "ethereal:block/totem_head_surprised",
+    "side": "ethereal:block/trimmed_rich_wood",
+    "top": "ethereal:block/chiseled_rich_wood"
+  }
+}
