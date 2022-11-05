@@ -1,5 +1,5 @@
 {
-  "parent": "ethereal:block/cube_column",
+  "parent": "minecraft:block/cube_column",
   "textures": {
     "end": "ethereal:block/rich_log_top",
     "side": "ethereal:block/rich_log"

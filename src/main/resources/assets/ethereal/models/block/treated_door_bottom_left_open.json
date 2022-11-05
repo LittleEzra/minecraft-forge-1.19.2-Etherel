@@ -1,0 +1,8 @@
+{
+  "render_type": "cutout",
+  "parent": "minecraft:block/door_bottom_left_open",
+  "textures": {
+    "bottom": "minecraft:block/treated_door_bottom",
+    "top": "minecraft:block/treated_door_top"
+  }
+}

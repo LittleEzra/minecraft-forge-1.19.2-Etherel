@@ -135,6 +135,7 @@ public class GhastSnareBlock extends Block {
         if (!level.isClientSide && hand == InteractionHand.MAIN_HAND && !state.getValue(NATURAL)){
             if (state.getValue(ACTIVATED) && !state.getValue(POWERED)){
                 reset(state, level, blockPos);
+                return InteractionResult.SUCCESS;
             }
         }
 

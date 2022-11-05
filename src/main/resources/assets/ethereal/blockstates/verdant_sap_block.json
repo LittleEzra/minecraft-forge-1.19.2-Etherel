@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "": {"model":  "ethereal:block/verdant_sap_block"}
+  },
+  "render_type": "translucent"
+}

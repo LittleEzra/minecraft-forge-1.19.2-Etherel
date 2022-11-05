@@ -3,6 +3,7 @@ package com.littleezra.ethereal.event;
 import com.littleezra.ethereal.Ethereal;
 import com.littleezra.ethereal.entity.ModEntityTypes;
 import com.littleezra.ethereal.entity.custom.Cnitherea;
+import com.littleezra.ethereal.entity.custom.TotemGolem;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -24,6 +25,7 @@ public class ModEvents {
         public static void entityAttributeEvent(EntityAttributeCreationEvent event)
         {
             event.put(ModEntityTypes.CNITHEREA.get(), Cnitherea.setAttributes());
+            event.put(ModEntityTypes.TOTEM_GOLEM.get(), TotemGolem.setAttributes());
         }
     }
 }

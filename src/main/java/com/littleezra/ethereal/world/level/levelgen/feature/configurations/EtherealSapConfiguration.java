@@ -3,6 +3,7 @@ package com.littleezra.ethereal.world.level.levelgen.feature.configurations;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 public class EtherealSapConfiguration implements FeatureConfiguration {
@@ -23,6 +24,10 @@ public class EtherealSapConfiguration implements FeatureConfiguration {
         public EtherealSapConfiguration.EtherealSapConfigurationBuilder block(BlockStateProvider blockProvider){
             this.blockProvider = blockProvider;
             return this;
+        }
+
+        public EtherealSapConfiguration build() {
+            return new EtherealSapConfiguration(this.blockProvider);
         }
     }
 }

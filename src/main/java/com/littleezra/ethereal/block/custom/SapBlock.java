@@ -8,13 +8,16 @@ import net.minecraft.world.level.block.GlassBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
-public class EtherealSapBlock extends GlassBlock
+public class SapBlock extends GlassBlock
 {
-    public EtherealSapBlock(Properties p_49795_) {
+    private Vec3 stuckInside;
+
+    public SapBlock(Properties p_49795_, Vec3 stuck) {
         super(p_49795_);
+        stuckInside = stuck;
     }
 
     public void entityInside(BlockState p_58180_, Level p_58181_, BlockPos p_58182_, Entity p_58183_) {
-        p_58183_.makeStuckInBlock(p_58180_, new Vec3((double)1F, (double)1F, (double)1F));
+        p_58183_.makeStuckInBlock(p_58180_, stuckInside);
     }
 }

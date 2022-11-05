@@ -21,6 +21,10 @@ public class ModSounds {
 
     public static final RegistryObject<SoundEvent> ETHEREAL_JELLYFISH_MOVE = registerSoundEvent("entity.ethereal_jellyfish.move");
 
+    public static final RegistryObject<SoundEvent> TOTEM_GOLEM_ROOT = registerSoundEvent("entity.totem_golem.root");
+    public static final RegistryObject<SoundEvent> TOTEM_GOLEM_AMBIENT = registerSoundEvent("entity.totem_golem.ambient");
+    public static final RegistryObject<SoundEvent> TOTEM_GOLEM_HIT = registerSoundEvent("entity.totem_golem.hit");
+
     // Ethereal Sap Block sounds
 
     public static final RegistryObject<SoundEvent> ETHEREAL_SAP_BREAK = registerSoundEvent("block.ethereal_sap.break");

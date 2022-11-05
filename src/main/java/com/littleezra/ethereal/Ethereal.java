@@ -1,13 +1,19 @@
 package com.littleezra.ethereal;
 
 import com.littleezra.ethereal.block.ModBlocks;
+import com.littleezra.ethereal.block.entity.ModBlockEntities;
 import com.littleezra.ethereal.entity.ModEntityTypes;
 import com.littleezra.ethereal.entity.client.CnithereaRenderer;
+import com.littleezra.ethereal.entity.client.TotemGolemRenderer;
 import com.littleezra.ethereal.item.ModItems;
+import com.littleezra.ethereal.screen.ModMenuTypes;
+import com.littleezra.ethereal.screen.SharpshooterMenu;
+import com.littleezra.ethereal.screen.SharpshooterScreen;
 import com.littleezra.ethereal.sound.ModSounds;
 import com.littleezra.ethereal.world.feature.ModConfiguredFeatures;
 import com.littleezra.ethereal.world.feature.ModPlacedFeatures;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -32,12 +38,15 @@ public class Ethereal
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         ModSounds.register(modEventBus);
 
         ModConfiguredFeatures.register(modEventBus);
         ModPlacedFeatures.register(modEventBus);
 
         ModEntityTypes.register(modEventBus);
+
+        ModMenuTypes.register(modEventBus);
 
         GeckoLib.initialize();
 
@@ -59,6 +68,9 @@ public class Ethereal
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(ModEntityTypes.CNITHEREA.get(), CnithereaRenderer::new);
+            EntityRenderers.register(ModEntityTypes.TOTEM_GOLEM.get(), TotemGolemRenderer::new);
+
+            MenuScreens.register(ModMenuTypes.SHARPSHOOTER_MENU.get(), SharpshooterScreen::new);
         }
     }
 }

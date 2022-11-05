@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "ethereal:block/rich_slab"
+    },
+    "type=double": {
+      "model": "ethereal:block/rich_planks"
+    },
+    "type=top": {
+      "model": "ethereal:block/rich_slab_top"
+    }
+  }
+}

@@ -25,10 +25,11 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class EtherealSpikeBlock extends Block {
+public class SapTrapBlock extends Block {
 
     public static final BooleanProperty ACTIVATED = BooleanProperty.create("activated");
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
@@ -38,7 +39,7 @@ public class EtherealSpikeBlock extends Block {
     public static final VoxelShape ACTIVATED_SHAPE = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D);
     public static final VoxelShape DEACTIVATED_SHAPE = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 2.0D, 10.0D);
 
-    public EtherealSpikeBlock(Properties properties) {
+    public SapTrapBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any()
                 .setValue(ACTIVATED, false)
@@ -71,8 +72,14 @@ public class EtherealSpikeBlock extends Block {
     public void entityInside(BlockState state, Level level, BlockPos blockPos, Entity entity) {
         if (entity instanceof LivingEntity livingEntity && state.getValue(ACTIVATED))
         {
+            Vec3 dir = new Vec3(
+                    (livingEntity.blockPosition().getX() - blockPos.getX()),
+                    (livingEntity.blockPosition().getX() - blockPos.getX()),
+                    (livingEntity.blockPosition().getX() - blockPos.getX())).normalize();
+
+            livingEntity.knockback(dir.x, dir.y, dir.z);
+
             livingEntity.hurt(ETHEREAL_SPIKE_DAMAGE, 2f);
-            livingEntity.knockback(blockPos.getX(),blockPos.getY(),blockPos.getZ());
         }
 
         if (!state.getValue(ACTIVATED) && entity instanceof LivingEntity)
@@ -125,6 +132,7 @@ public class EtherealSpikeBlock extends Block {
         if (!level.isClientSide && hand == InteractionHand.MAIN_HAND && !state.getValue(NATURAL)){
             if (state.getValue(ACTIVATED) && !state.getValue(POWERED)){
                 reset(state, level, blockPos);
+                return InteractionResult.SUCCESS;
             }
         }
 

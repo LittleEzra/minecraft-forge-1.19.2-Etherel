@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "ethereal:block/stripped_rich_log",
+    "side": "ethereal:block/stripped_rich_log"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "ethereal:rich_log"
+    },
+    "o": {
+      "item": "ethereal:verdant_sap"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#o#",
+    " # "
+  ],
+  "result": {
+    "item": "ethereal:surprise_totem"
+  }
+}

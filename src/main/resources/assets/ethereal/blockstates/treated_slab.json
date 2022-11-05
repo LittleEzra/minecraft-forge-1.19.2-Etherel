@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "ethereal:block/treated_slab"
+    },
+    "type=double": {
+      "model": "ethereal:block/treated_planks"
+    },
+    "type=top": {
+      "model": "ethereal:block/treated_slab_top"
+    }
+  }
+}

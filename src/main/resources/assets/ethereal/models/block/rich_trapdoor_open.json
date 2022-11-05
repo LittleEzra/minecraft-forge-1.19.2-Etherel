@@ -1,0 +1,7 @@
+{
+  "render_type": "cutout",
+  "parent": "minecraft:block/template_trapdoor_open",
+  "textures": {
+    "texture": "ethereal:block/rich_trapdoor"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "ethereal:block/treated_planks",
+    "side": "ethereal:block/treated_planks",
+    "top": "ethereal:block/treated_planks"
+  }
+}

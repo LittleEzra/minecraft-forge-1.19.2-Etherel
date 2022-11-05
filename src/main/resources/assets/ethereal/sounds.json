@@ -100,6 +100,7 @@
       { "name": "ethereal:block/ethereal_plating/ethereal_plating_step5" }
     ]
   },
+
   "block.ethereal_plating.fall": {
     "sounds": [
       { "name": "ethereal:block/ethereal_plating/ethereal_plating_step0" },
@@ -109,6 +110,32 @@
       { "name": "ethereal:block/ethereal_plating/ethereal_plating_step4" },
       { "name": "ethereal:block/ethereal_plating/ethereal_plating_step5" }
     ]
-  }
+  },
 
+  "entity.totem_golem.ambient": {
+    "sounds": [
+    { "name": "ethereal:entity/totem_golem/totem_golem_ambient0" },
+    { "name": "ethereal:entity/totem_golem/totem_golem_ambient1" },
+    { "name": "ethereal:entity/totem_golem/totem_golem_ambient2" },
+    { "name": "ethereal:entity/totem_golem/totem_golem_ambient3" },
+    { "name": "ethereal:entity/totem_golem/totem_golem_ambient4" },
+    { "name": "ethereal:entity/totem_golem/totem_golem_ambient5" }
+    ]
+  },
+
+  "entity.totem_golem.hit": {
+      "sounds": [
+      { "name": "ethereal:entity/totem_golem/totem_golem_hit0" },
+      { "name": "ethereal:entity/totem_golem/totem_golem_hit1" },
+      { "name": "ethereal:entity/totem_golem/totem_golem_hit2" },
+      { "name": "ethereal:entity/totem_golem/totem_golem_hit3" },
+      { "name": "ethereal:entity/totem_golem/totem_golem_hit4" }
+      ]
+    },
+
+    "entity.totem_golem.root": {
+        "sounds": [
+        { "name": "ethereal:entity/totem_golem/totem_golem_root" }
+        ]
+      }
 }

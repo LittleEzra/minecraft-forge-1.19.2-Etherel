@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "ethereal:ethereal_sap_block"
+    "ethereal:ethereal_sap_block",
+    "ethereal:verdant_sap_block",
+    "ethereal:necrotic_sap_block"
   ]
 }
