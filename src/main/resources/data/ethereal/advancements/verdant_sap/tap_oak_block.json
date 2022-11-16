@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:bucket"
+    },
+    "title": "Tap Sap",
+    "description": "Extract fresh verdant sap from rich wood"
+  },
+  "parent": "ethereal:verdant_sap/treat_oak_block",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:bucket"
+          ]
+        },
+        "location": {
+          "block": {
+            "tag": "ethereal:rich_logs"
+          }
+        }
+      }
+    }
+  }
+}

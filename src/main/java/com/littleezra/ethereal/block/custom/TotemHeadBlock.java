@@ -67,9 +67,9 @@ public class TotemHeadBlock extends HorizontalDirectionalBlock
         return 3;
     }
 
-    public void onPlace(BlockState p_51387_, Level p_51388_, BlockPos p_51389_, BlockState p_51390_, boolean p_51391_) {
-        if (!p_51390_.is(p_51387_.getBlock())) {
-            this.trySpawnGolem(p_51388_, p_51389_);
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState state2, boolean p_51391_) {
+        if (!state2.is(state.getBlock())) {
+            this.trySpawnGolem(level, pos);
         }
     }
 

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "ethereal:block/elder_wood",
+    "side": "ethereal:block/elder_wood"
+  }
+}

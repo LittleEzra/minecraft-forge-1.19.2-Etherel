@@ -24,10 +24,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
 
 public class SapTrapBlock extends Block {
 
@@ -85,7 +87,7 @@ public class SapTrapBlock extends Block {
         if (!state.getValue(ACTIVATED) && entity instanceof LivingEntity)
         {
             if (!entity.isShiftKeyDown()){
-                activate(state, level, blockPos);
+                activate(state, level, blockPos, entity);
             }
         }
     }
@@ -115,13 +117,17 @@ public class SapTrapBlock extends Block {
                     0d);
         }
     }
-    private static void activate(BlockState state, Level level, BlockPos blockPos){
+    private static void activate(BlockState state, Level level, BlockPos blockPos, @Nullable Entity entity){
+        level.gameEvent(entity, GameEvent.BLOCK_ACTIVATE, blockPos);
+
         level.setBlock(blockPos, state.setValue(ACTIVATED, true), 3);
         level.playSound(null, blockPos, ModSounds.ETHEREAL_SPIKE_ACTIVATE.get(), SoundSource.BLOCKS, 1F, 1F);
         spawnParticles(level, blockPos);
     }
-    private static void reset(BlockState state, Level level, BlockPos blockPos)
+    private static void reset(BlockState state, Level level, BlockPos blockPos, @Nullable Entity entity, boolean fireEvent)
     {
+        if (fireEvent) level.gameEvent(entity, GameEvent.BLOCK_DEACTIVATE, blockPos);
+
         level.setBlock(blockPos, state.setValue(ACTIVATED, false), 3);
         level.playSound(null, blockPos, ModSounds.ETHEREAL_SPIKE_RESET.get(), SoundSource.BLOCKS, 1F, 1F);
     }
@@ -131,7 +137,7 @@ public class SapTrapBlock extends Block {
     {
         if (!level.isClientSide && hand == InteractionHand.MAIN_HAND && !state.getValue(NATURAL)){
             if (state.getValue(ACTIVATED) && !state.getValue(POWERED)){
-                reset(state, level, blockPos);
+                reset(state, level, blockPos, player, !player.isShiftKeyDown());
                 return InteractionResult.SUCCESS;
             }
         }
@@ -150,9 +156,11 @@ public class SapTrapBlock extends Block {
             boolean flag = level.hasNeighborSignal(pos);
             if (flag != state.getValue(POWERED)) {
                 if (state.getValue(ACTIVATED) != flag) {
-                    state = state.setValue(ACTIVATED, Boolean.valueOf(flag));
-                    level.playSound(null, pos, (flag ? ModSounds.ETHEREAL_SPIKE_ACTIVATE.get() : ModSounds.ETHEREAL_SPIKE_RESET.get()), SoundSource.BLOCKS, 1F, 1F);
-                    spawnParticles(level, blockPos);
+                    if (flag){
+                        activate(state, level, pos, null);
+                    } else{
+                        reset(state, level, pos, null, true);
+                    }
                 }
 
                 level.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(flag)), 2);

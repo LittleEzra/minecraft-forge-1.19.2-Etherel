@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "ethereal:elder_oak",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+
+    "salt": 144570132,
+
+    "spacing": 20,
+
+    "separation": 6
+  }
+}

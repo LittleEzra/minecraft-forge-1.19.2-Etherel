@@ -3,10 +3,11 @@ package com.littleezra.ethereal.item;
 import com.littleezra.ethereal.Ethereal;
 import com.littleezra.ethereal.block.ModBlocks;
 import com.littleezra.ethereal.entity.ModEntityTypes;
-import com.littleezra.ethereal.item.custom.AetherMusicDiscItem;
-import com.littleezra.ethereal.item.custom.EtherealConcentrateItem;
+import com.littleezra.ethereal.item.custom.ModRecordItem;
 import com.littleezra.ethereal.item.custom.VerdantSapItem;
 import com.littleezra.ethereal.sound.ModSounds;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -15,8 +16,14 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.function.Supplier;
+
 public class ModItems
 {
+    private static final Supplier<MobEffectInstance> etherealEffect = () -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 1);
+    private static final Supplier<MobEffectInstance> necroticEffect = () -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 2);
+    private static final Supplier<MobEffectInstance> verdantEffect  = () -> new MobEffectInstance(MobEffects.ABSORPTION, 500, 2);
+
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Ethereal.MODID);
 
@@ -25,12 +32,12 @@ public class ModItems
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     public static final RegistryObject<Item> MUSIC_DISC_AETHER = ITEMS.register("music_disc_aether",
-            () -> new AetherMusicDiscItem(0, () -> ModSounds.MUSIC_DISC_AETHER.get(),
-                    new Item.Properties().tab(CreativeModeTab.TAB_MISC).rarity(Rarity.RARE).stacksTo(1), 760));
+            () -> new ModRecordItem(0, () -> ModSounds.MUSIC_DISC_AETHER.get(),
+                    new Item.Properties().tab(CreativeModeTab.TAB_MISC).rarity(Rarity.RARE).stacksTo(1), 1840, "LittleEzra - Aether"));
 
     public static final RegistryObject<Item> ETHEREAL_CONCENTRATE = ITEMS.register("ethereal_concentrate",
-            () -> new EtherealConcentrateItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(
-                    new FoodProperties.Builder().alwaysEat().build())));
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(
+                    new FoodProperties.Builder().effect(etherealEffect, 1f).alwaysEat().build())));
 
     public static final RegistryObject<Item> ETHEREAL_TORCH = ITEMS.register("ethereal_torch",
             () -> new StandingAndWallBlockItem(ModBlocks.ETHEREAL_TORCH.get(), ModBlocks.ETHEREAL_WALL_TORCH.get(), (new Item.Properties()).tab(CreativeModeTab.TAB_DECORATIONS)));
@@ -45,15 +52,30 @@ public class ModItems
             () -> new ForgeSpawnEggItem(ModEntityTypes.CNITHEREA, 0x6495d0, 0xa3e1ff, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     public static final RegistryObject<Item> TOTEM_GOLEM_SPAWN_EGG = ITEMS.register("totem_golem_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.TOTEM_GOLEM, 0x60281a, 0x804b2c, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> FAIRYFLY_SPAWN_EGG = ITEMS.register("fairyfly_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.FAIRYFLY, 0xc3a9db, 0xffd695, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> BUSHHOG_SPAWN_EGG = ITEMS.register("bushhog_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.BUSHHOG, 0x6c8031, 0x9c8067, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     // NECROTIC SAP
 
     public static final RegistryObject<Item> NECROTIC_SAP = ITEMS.register("necrotic_sap",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
+    public static final RegistryObject<Item> NECROTIC_CONCENTRATE = ITEMS.register("necrotic_concentrate",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(
+                    new FoodProperties.Builder().effect(necroticEffect, 1f).alwaysEat().build())));
+
     // VERDANT SAP
 
     public static final RegistryObject<Item> VERDANT_SAP = ITEMS.register("verdant_sap",
+            () -> new VerdantSapItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<Item> VERDANT_CONCENTRATE = ITEMS.register("verdant_concentrate",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(
+                    new FoodProperties.Builder().effect(verdantEffect, 1f).alwaysEat().build())));
+
+    public static final RegistryObject<Item> SCULK_HEART = ITEMS.register("sculk_heart",
             () -> new VerdantSapItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 

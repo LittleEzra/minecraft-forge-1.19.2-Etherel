@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "": {"model":  "ethereal:block/elder_vine"}
+  },
+  "render_type": "cutout"
+}

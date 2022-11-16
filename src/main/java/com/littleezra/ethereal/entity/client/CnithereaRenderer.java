@@ -25,7 +25,6 @@ public class CnithereaRenderer extends GeoEntityRenderer<Cnitherea> {
     @Override
     public RenderType getRenderType(Cnitherea animatable, float partialTicks, PoseStack stack, @Nullable MultiBufferSource renderTypeBuffer, @Nullable VertexConsumer vertexBuilder, int packedLightIn, ResourceLocation textureLocation)
     {
-
-        return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
+        return RenderType.entityTranslucent(textureLocation);
     }
 }

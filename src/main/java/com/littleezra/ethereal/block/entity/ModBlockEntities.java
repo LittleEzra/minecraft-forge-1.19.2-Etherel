@@ -16,6 +16,9 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<SharpshooterBlockEntity>> SHARPSHOOTER = BLOCK_ENTITES.register("sharpshooter",
             () -> BlockEntityType.Builder.of(SharpshooterBlockEntity::new, ModBlocks.SHARPSHOOTER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<SharpshooterBlockEntity>> AMBER_BLOCK = BLOCK_ENTITES.register("amber_block",
+            () -> BlockEntityType.Builder.of(SharpshooterBlockEntity::new, ModBlocks.SHARPSHOOTER.get()).build(null));
+
     public static void register(IEventBus eventBus){
         BLOCK_ENTITES.register(eventBus);
     }

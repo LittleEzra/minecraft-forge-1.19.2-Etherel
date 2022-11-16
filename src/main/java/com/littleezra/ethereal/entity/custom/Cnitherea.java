@@ -1,7 +1,6 @@
 package com.littleezra.ethereal.entity.custom;
 
 import com.littleezra.ethereal.sound.ModSounds;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -24,8 +23,6 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
-
-import javax.xml.crypto.Data;
 
 public class Cnitherea extends FlyingMob implements IAnimatable {
 

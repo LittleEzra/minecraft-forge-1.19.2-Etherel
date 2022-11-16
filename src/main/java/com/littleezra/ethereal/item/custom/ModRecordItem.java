@@ -14,15 +14,17 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class AetherMusicDiscItem extends RecordItem {
+public class ModRecordItem extends RecordItem {
 
+    private String description;
 
-    public AetherMusicDiscItem(int comparatorValue, Supplier<SoundEvent> soundSupplier, Properties builder, int lengthInTicks) {
+    public ModRecordItem(int comparatorValue, Supplier<SoundEvent> soundSupplier, Properties builder, int lengthInTicks, String description) {
         super(comparatorValue, soundSupplier, builder, lengthInTicks);
+        this.description = description;
     }
 
     @Override
     public MutableComponent getDisplayName() {
-        return Component.literal("LittleEzra - Aether");
+        return Component.literal(description);
     }
 }

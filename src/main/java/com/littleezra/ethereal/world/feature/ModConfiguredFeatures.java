@@ -9,12 +9,14 @@ import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
@@ -45,14 +47,16 @@ public class ModConfiguredFeatures {
     //                BlockStateProvider.simple(ModBlocks.ETHEREAL_SAP_BLOCK.get()))
     //               .build()));
 
-    public static final RegistryObject<ConfiguredFeature<?, ?>> RICH_PINE = CONFIGURED_FEATURES.register("rich_pine", () ->
-            new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                    BlockStateProvider.simple(ModBlocks.RICH_LOG.get()),
-                    new StraightTrunkPlacer(5, 2, 1),
-                    BlockStateProvider.simple(ModBlocks.RICH_LEAVES.get()),
-                    new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(0, 2), UniformInt.of(1, 2)),
-                    new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build()
-            ));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> RICH_TREE = CONFIGURED_FEATURES.register("rich_tree", () ->
+            new ConfiguredFeature<>(Feature.TREE, createRich().build()));
+
+    private static TreeConfiguration.TreeConfigurationBuilder createStraightBlobTree(Block trunkBlock, Block leavesBlock, int p_195149_, int p_195150_, int p_195151_, int p_195152_) {
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(trunkBlock), new StraightTrunkPlacer(p_195149_, p_195150_, p_195151_), BlockStateProvider.simple(leavesBlock), new BlobFoliagePlacer(ConstantInt.of(p_195152_), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1));
+    }
+
+    private static TreeConfiguration.TreeConfigurationBuilder createRich() {
+        return createStraightBlobTree(ModBlocks.RICH_LOG.get(), ModBlocks.RICH_LEAVES.get(), 4, 2, 0, 2).ignoreVines();
+    }
 
     public static void register(IEventBus eventBus){
         CONFIGURED_FEATURES.register(eventBus);

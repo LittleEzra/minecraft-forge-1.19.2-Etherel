@@ -2,10 +2,11 @@
   "item.ethereal.ethereal_sap": "Ethereal Sap",
   "item.ethereal.necrotic_sap": "Necrotic Sap",
   "item.ethereal.verdant_sap": "Verdant Sap",
-  "item.ethereal.music_disc_aether": "Music Disc",
   "item.ethereal.ethereal_concentrate": "Ethereal Concentrate",
-  "item.ethereal.cnitherea_spawn_egg": "Cnitherea Spawn Egg",
-  "item.ethereal.totem_golem_spawn_egg": "Totem Golem Spawn Egg",
+  "item.ethereal.necrotic_concentrate": "Necrotic Concentrate",
+  "item.ethereal.verdant_concentrate": "Verdant Concentrate",
+  "item.ethereal.sculk_heart": "Sculk Heart",
+  "item.ethereal.music_disc_aether": "Music Disc",
 
   "block.ethereal.ethereal_sap_block": "Block of Ethereal Sap",
   "block.ethereal.verdant_sap_block": "Block of Verdant Sap",
@@ -17,6 +18,8 @@
   "block.ethereal.ethereal_spike": "Sap Trap",
   "block.ethereal.ghast_snare": "Ghast Snare",
   "block.ethereal.sharpshooter": "Sharpshooter",
+  "block.ethereal.amber_block": "Block of Amber",
+  "block.ethereal.sculk_husk": "Sculk Husk",
 
   "block.ethereal.rich_log": "Rich Log",
   "block.ethereal.rich_wood": "Rich Wood",
@@ -39,11 +42,20 @@
   "block.ethereal.treated_fence": "Treated Fence",
   "block.ethereal.treated_fence_gate": "Treated Fence Gate",
   "block.ethereal.rich_sapling": "Rich Sapling",
+  "block.ethereal.elder_wood": "Elder Wood",
+
+  "item.ethereal.cnitherea_spawn_egg": "Cnitherea Spawn Egg",
+  "item.ethereal.totem_golem_spawn_egg": "Totem Golem Spawn Egg",
+  "item.ethereal.fairyfly_spawn_egg": "Fairyfly Spawn Egg",
+  "item.ethereal.bushhog_spawn_egg": "Bushhog Spawn Egg",
 
   "entity.ethereal.cnitherea": "Cnitherea",
   "entity.ethereal.totem_golem": "Totem Golem",
+  "entity.ethereal.fairyfly": "Fairyfly",
+  "entity.ethereal.bushhog": "Bushhog",
 
   "itemGroup.etherealtab": "Ethereal",
 
-  "death.attack.ethereal_spike_damage": "%1$s was stabbed to death"
+  "death.attack.ethereal_spike_damage": "%1$s was stabbed to death",
+  "death.attack.bushhog_damage": "%1$s tried to pet a bushhog"
 }

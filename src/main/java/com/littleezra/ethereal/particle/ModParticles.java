@@ -15,8 +15,8 @@ public class ModParticles {
             DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, Ethereal.MODID);
 
     // Adding Particles
-    public static final RegistryObject<SimpleParticleType> ETHEREAL_FLAME_PARTICLES = PARTICLE_TYPES.register("ethereal_flame_particles",
-            () -> new SimpleParticleType(true));
+    //public static final RegistryObject<SimpleParticleType> ETHEREAL_FLAME_PARTICLES = PARTICLE_TYPES.register("ethereal_flame_particles",
+    //        () -> new SimpleParticleType(true));
 
 
     public static void register(IEventBus eventBus){

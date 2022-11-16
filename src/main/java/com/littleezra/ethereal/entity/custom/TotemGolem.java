@@ -45,6 +45,7 @@ import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.builder.ILoopType;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
@@ -189,38 +190,45 @@ public class TotemGolem extends AbstractGolem implements IAnimatable, OwnableEnt
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event)
     {
+        ILoopType.EDefaultLoopTypes loop = ILoopType.EDefaultLoopTypes.LOOP;
+        ILoopType.EDefaultLoopTypes playOnce = ILoopType.EDefaultLoopTypes.PLAY_ONCE;
+
         if (this.isRooted()){
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("totem_golem.animation.rooted", true));
+            if (!this.hasPlayedRoot()){
+                this.setPlayedRoot(true);
+                event.getController().clearAnimationCache();
+
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("totem_golem.animation.root", playOnce));
+                playSound(ModSounds.TOTEM_GOLEM_ROOT.get());
+
+            } else{
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("totem_golem.animation.rooted", loop));
+            }
             return PlayState.CONTINUE;
         }
         else if (event.isMoving()){
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("totem_golem.animation.walk", true));
+            this.setPlayedRoot(false);
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("totem_golem.animation.walk", loop));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("totem_golem.animation.idle", true));
-        return PlayState.CONTINUE;
-    }
+        this.setPlayedRoot(false);
 
-    @Override
-    public float getSpeed() {
-        return isRooted() ? 0f : super.getSpeed();
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("totem_golem.animation.idle", loop));
+        return PlayState.CONTINUE;
     }
 
     private PlayState rootPredicate(AnimationEvent event) {
 
-        System.out.println(hasPlayedRoot());
-
         if (this.isRooted() && !this.hasPlayedRoot())
         {
-            event.getController().markNeedsReload();
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("totem_golem.animation.root"));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("totem_golem.animation.root", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
 
-            this.playSound(ModSounds.TOTEM_GOLEM_ROOT.get(), 1f, 1f);
+            //this.playSound(ModSounds.TOTEM_GOLEM_ROOT.get(), 1f, 1f);
 
             this.setPlayedRoot(true);
-        } else{
-            event.getController().setAnimation(new AnimationBuilder().clearAnimations());
+
+            return PlayState.CONTINUE;
         }
         return PlayState.CONTINUE;
     }
@@ -229,10 +237,14 @@ public class TotemGolem extends AbstractGolem implements IAnimatable, OwnableEnt
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController(this, "controller",
                 0, this::predicate));
-        data.addAnimationController(new AnimationController(this, "rootController",
-                0, this::rootPredicate));
+        //data.addAnimationController(new AnimationController(this, "rootController",
+        //        0, this::rootPredicate));
     }
 
+    @Override
+    public float getSpeed() {
+        return isRooted() ? 0f : super.getSpeed();
+    }
 
     public boolean isOrderedToSit()
     {
@@ -250,14 +262,14 @@ public class TotemGolem extends AbstractGolem implements IAnimatable, OwnableEnt
         ItemStack itemstack = player.getItemInHand(hand);
         if (!itemstack.is(Items.POPPY) && !itemstack.is(Items.WITHER_ROSE)) {
             return InteractionResult.PASS;
-        } else if (itemstack.is(Items.POPPY)){
+        } else if (itemstack.is(Items.POPPY) && this.getOwner() == null){
             this.setOwnerUUID(player.getUUID());
 
             if (!player.getAbilities().instabuild) {
                 itemstack.shrink(1);
             }
             return InteractionResult.sidedSuccess(this.level.isClientSide);
-        } else{
+        } else if (this.getOwner() != null && player == this.getOwner()){
 
             this.setOwnerUUID(null);
             this.setRooted(false);
@@ -267,6 +279,7 @@ public class TotemGolem extends AbstractGolem implements IAnimatable, OwnableEnt
             }
             return InteractionResult.sidedSuccess(this.level.isClientSide);
         }
+        return InteractionResult.PASS;
     }
 
     public boolean checkSpawnObstruction(LevelReader p_28853_) {

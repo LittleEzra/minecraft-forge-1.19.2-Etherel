@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "ethereal:verdant_sap"
+    },
+    "title": "A Gracious Gift",
+    "description": "Turn any oak block into it's rich variant"
+  },
+  "parent": "ethereal:verdant_sap/find_elder_oak",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "ethereal:verdant_sap"
+          ]
+        }
+      }
+    }
+  }
+}

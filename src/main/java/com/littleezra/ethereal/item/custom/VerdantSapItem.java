@@ -25,13 +25,14 @@ public class VerdantSapItem extends Item {
 
     public static final Supplier<BiMap<Block, Block>> RICH_VERSION = Suppliers.memoize(() -> {
         return ImmutableBiMap.<Block, Block>builder()
-                .put(Blocks.SPRUCE_LOG, ModBlocks.RICH_LOG.get())
-                .put(Blocks.STRIPPED_SPRUCE_LOG, ModBlocks.STRIPPED_RICH_LOG.get())
-                .put(Blocks.SPRUCE_WOOD, ModBlocks.RICH_WOOD.get())
-                .put(Blocks.STRIPPED_SPRUCE_WOOD, ModBlocks.STRIPPED_RICH_WOOD.get())
+                .put(Blocks.OAK_LOG,           ModBlocks.RICH_LOG.get())
+                .put(Blocks.STRIPPED_OAK_LOG,  ModBlocks.STRIPPED_RICH_LOG.get())
+                .put(Blocks.OAK_WOOD,          ModBlocks.RICH_WOOD.get())
+                .put(Blocks.STRIPPED_OAK_WOOD, ModBlocks.STRIPPED_RICH_WOOD.get())
+                .put(Blocks.OAK_LEAVES,        ModBlocks.RICH_LEAVES.get())
                 .build();
     });
-    public static final Supplier<BiMap<Block, Block>> SPRUCE_VERSION = Suppliers.memoize(() -> {
+    public static final Supplier<BiMap<Block, Block>> OAK_VERSION = Suppliers.memoize(() -> {
         return RICH_VERSION.get().inverse();
     });
 

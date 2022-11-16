@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "ethereal:sobriety_totem"
+    },
+    "title": "Rise, My Creation!",
+    "description": "Create a golem using the essence of verdant sap"
+  },
+  "parent": "ethereal:verdant_sap/find_elder_oak",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:summoned_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "#ethereal:verdant_sap_golem"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

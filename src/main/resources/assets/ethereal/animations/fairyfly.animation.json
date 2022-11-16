@@ -1,0 +1,59 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"fairyfly.animation.move": {
+			"loop": true,
+			"animation_length": 0.16667,
+			"blend_weight": "0.5",
+			"bones": {
+				"wing_left": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -70]
+						},
+						"0.0833": {
+							"vector": [0, 0, 70],
+							"easing": "easeOutCirc"
+						},
+						"0.1667": {
+							"vector": [0, 0, -70],
+							"easing": "easeOutCirc"
+						}
+					}
+				},
+				"wing_right": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 70]
+						},
+						"0.0833": {
+							"vector": [0, 0, -70],
+							"easing": "easeOutCirc"
+						},
+						"0.1667": {
+							"vector": [0, 0, 70],
+							"easing": "easeOutCirc"
+						}
+					}
+				}
+			}
+		},
+		"fairyfly.animation.sit": {
+			"loop": true,
+			"animation_length": 0.04167,
+			"bones": {
+				"wing_left": {
+					"rotation": {
+						"vector": [0, 0, 22.5]
+					}
+				},
+				"wing_right": {
+					"rotation": {
+						"vector": [0, 0, -22.5]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}
