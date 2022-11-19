@@ -13,6 +13,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -60,7 +61,7 @@ public class Bushhog extends PathfinderMob implements IAnimatable, IFairy {
     );
     private static final EntityDataAccessor<Boolean> DATA_IS_HIDING = SynchedEntityData.defineId(Fairyfly.class, EntityDataSerializers.BOOLEAN);
 
-    public static final DamageSource BUSHHOG_DAMAGE = new DamageSource("bushhog_damage");
+    public final DamageSource BUSHHOG_DAMAGE = new EntityDamageSource("bushhog_damage", this);
 
     private AnimationFactory factory = new AnimationFactory(this);
 
@@ -159,7 +160,7 @@ public class Bushhog extends PathfinderMob implements IAnimatable, IFairy {
 
     @Override
     public boolean hurt(DamageSource source, float damage) {
-        source.getDirectEntity().hurt(BUSHHOG_DAMAGE, 2f);
+        if (source.getDirectEntity() != null) source.getDirectEntity().hurt(BUSHHOG_DAMAGE, 2f);
 
         return super.hurt(source, damage);
     }

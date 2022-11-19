@@ -23,6 +23,26 @@
     ]
   },
 
+  "effect.ethereal_guard.break": {
+    "sounds": [
+      { "name": "ethereal:effect/ethereal_guard_shatter0" },
+      { "name": "ethereal:effect/ethereal_guard_shatter1" },
+      { "name": "ethereal:effect/ethereal_guard_shatter1", "pitch": 0.9 },
+      { "name": "ethereal:effect/ethereal_guard_shatter2" },
+      { "name": "ethereal:effect/ethereal_guard_shatter2", "pitch": 1.1 }
+    ]
+  },
+
+  "effect.ethereal_guard.regenerate": {
+    "sounds": [
+      { "name": "ethereal:effect/ethereal_guard_regen0" },
+      { "name": "ethereal:effect/ethereal_guard_regen1" },
+      { "name": "ethereal:effect/ethereal_guard_regen1", "pitch": 1.1 },
+      { "name": "ethereal:effect/ethereal_guard_regen2" },
+      { "name": "ethereal:effect/ethereal_guard_regen", "pitch": 0.9 }
+    ]
+  },
+
   "block.ethereal_sap.break": {
     "sounds": [
       { "name": "ethereal:block/ethereal_sap/ethereal_sap_break0" },

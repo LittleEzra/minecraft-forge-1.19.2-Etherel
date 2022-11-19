@@ -224,8 +224,6 @@ public class TotemGolem extends AbstractGolem implements IAnimatable, OwnableEnt
         {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("totem_golem.animation.root", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
 
-            //this.playSound(ModSounds.TOTEM_GOLEM_ROOT.get(), 1f, 1f);
-
             this.setPlayedRoot(true);
 
             return PlayState.CONTINUE;
@@ -269,7 +267,7 @@ public class TotemGolem extends AbstractGolem implements IAnimatable, OwnableEnt
                 itemstack.shrink(1);
             }
             return InteractionResult.sidedSuccess(this.level.isClientSide);
-        } else if (this.getOwner() != null && player == this.getOwner()){
+        } else if (this.getOwner() != null && player.getUUID() == this.getOwnerUUID()){
 
             this.setOwnerUUID(null);
             this.setRooted(false);

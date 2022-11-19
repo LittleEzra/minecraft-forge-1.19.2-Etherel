@@ -28,6 +28,6 @@ public class SculkHuskBlock extends Block {
     }
 
     private void spawnGolem(BlockState state, Level level, BlockPos pos, Player player){
-        player.sendSystemMessage(Component.literal("Sculk Heart used by " + player.getName()));
+        player.sendSystemMessage(Component.literal("Sculk Heart used by " + player.getName().getString()));
     }
 }

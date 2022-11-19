@@ -2,6 +2,7 @@ package com.littleezra.ethereal.networking;
 
 import com.littleezra.ethereal.Ethereal;
 import com.littleezra.ethereal.networking.packets.ExampleC2SPacket;
+import com.littleezra.ethereal.networking.packets.JumpS2CPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -32,6 +33,11 @@ public class ModMessages {
                 .decoder(ExampleC2SPacket::new)
                 .encoder(ExampleC2SPacket::toBytes)
                 .consumerMainThread(ExampleC2SPacket::handle)
+                .add();
+        net.messageBuilder(JumpS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(JumpS2CPacket::new)
+                .encoder(JumpS2CPacket::toBytes)
+                .consumerMainThread(JumpS2CPacket::handle)
                 .add();
     }
 

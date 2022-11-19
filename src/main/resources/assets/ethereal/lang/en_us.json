@@ -1,4 +1,6 @@
 {
+  "item.ethereal.insta_vita": "Insta Vita",
+
   "item.ethereal.ethereal_sap": "Ethereal Sap",
   "item.ethereal.necrotic_sap": "Necrotic Sap",
   "item.ethereal.verdant_sap": "Verdant Sap",
@@ -7,6 +9,7 @@
   "item.ethereal.verdant_concentrate": "Verdant Concentrate",
   "item.ethereal.sculk_heart": "Sculk Heart",
   "item.ethereal.music_disc_aether": "Music Disc",
+  "item.ethereal.hardy_brew": "Hardy Brew",
 
   "block.ethereal.ethereal_sap_block": "Block of Ethereal Sap",
   "block.ethereal.verdant_sap_block": "Block of Verdant Sap",
@@ -54,8 +57,16 @@
   "entity.ethereal.fairyfly": "Fairyfly",
   "entity.ethereal.bushhog": "Bushhog",
 
+  "effect.ethereal.lava_walking": "Lava Walking",
+  "effect.ethereal.ethereal_guard": "Ethereal Guard",
+  "effect.ethereal.elder_oak_blessing": "Sacred Blessing",
+  "effect.ethereal.elder_oak_curse": "Elder Oaks Curse",
+
   "itemGroup.etherealtab": "Ethereal",
 
   "death.attack.ethereal_spike_damage": "%1$s was stabbed to death",
-  "death.attack.bushhog_damage": "%1$s tried to pet a bushhog"
+  "death.attack.bushhog_damage": "%1$s tried to pet a bushhog",
+  "death.attack.elder_oak_curse": "%1$s was punished by the Elder Oak",
+  "death.attack.elder_oak_curse.player": "%1$s was punished by the Elder Oak",
+  "death.attack.elder_oak_blessing": "%1$s was killed by the Elder Oak"
 }

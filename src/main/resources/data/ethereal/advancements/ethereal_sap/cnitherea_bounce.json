@@ -1,0 +1,15 @@
+{
+  "display": {
+    "icon": {
+      "item": "ethereal:ethereal_concentrate"
+    },
+    "title": "Boing!",
+    "description": "Bounce off of a Cnitherea!"
+  },
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "requirement": {
+      "trigger": "ethereal:cnitherea_bounce"
+    }
+  }
+}

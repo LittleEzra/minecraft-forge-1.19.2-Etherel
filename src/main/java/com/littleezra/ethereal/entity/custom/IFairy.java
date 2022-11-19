@@ -24,4 +24,15 @@ public interface IFairy {
 
         return flag;
     }
+
+    static PlayerFairyAggressor playerGetAggressor(Player player){
+        LazyOptional<PlayerFairyAggressor> lazyOptional = player.getCapability(PlayerFairyAggressorProvider.PLAYER_FAIRY_AGGRESSOR);
+        if (lazyOptional.isPresent()){
+            PlayerFairyAggressor aggressor = lazyOptional.orElseGet(() ->{
+                return null;
+            });
+            return aggressor;
+        }
+        return null;
+    }
 }

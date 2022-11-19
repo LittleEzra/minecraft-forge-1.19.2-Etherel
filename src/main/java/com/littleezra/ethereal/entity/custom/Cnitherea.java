@@ -1,17 +1,20 @@
 package com.littleezra.ethereal.entity.custom;
 
+import com.littleezra.ethereal.Ethereal;
 import com.littleezra.ethereal.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
@@ -24,10 +27,39 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import java.util.List;
+
 public class Cnitherea extends FlyingMob implements IAnimatable {
 
     private AnimationFactory factory = new AnimationFactory(this);
     private static final EntityDataAccessor<Float> DATA_HOVER_POSITION = SynchedEntityData.defineId(Cnitherea.class, EntityDataSerializers.FLOAT);
+
+    @Override
+    public void tick() {
+        super.tick();
+        List<Entity> list = this.level.getEntities(this, this.getBoundingBox());
+        for (int i = 0; i < list.size(); i++){
+            if (list.get(i) instanceof LivingEntity livingEntity){
+                livingEntity.setDeltaMovement(
+                        livingEntity.getDeltaMovement().x,
+                        0.8D,
+                        livingEntity.getDeltaMovement().z
+                );
+
+                if (livingEntity instanceof Player player && Ethereal.getServerPlayer(player) != null){
+                    Ethereal.CNITHEREA_BOUNCE.trigger(Ethereal.getServerPlayer(player));
+                }
+            }
+        }
+    }
+
+    @Override
+    public void push(Entity p_21294_) {
+    }
+
+    @Override
+    protected void pushEntities() {
+    }
 
     @Nullable
     @Override

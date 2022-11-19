@@ -1,5 +1,6 @@
 package com.littleezra.ethereal;
 
+import com.littleezra.ethereal.advancements.critereon.CnithereaBounceTrigger;
 import com.littleezra.ethereal.advancements.critereon.FairyAggressorTrigger;
 import com.littleezra.ethereal.block.ModBlocks;
 import com.littleezra.ethereal.block.entity.ModBlockEntities;
@@ -13,15 +14,14 @@ import com.littleezra.ethereal.loot.ModLootModifiers;
 import com.littleezra.ethereal.networking.ModMessages;
 import com.littleezra.ethereal.particle.ModParticles;
 import com.littleezra.ethereal.screen.ModMenuTypes;
-import com.littleezra.ethereal.screen.SharpshooterMenu;
 import com.littleezra.ethereal.screen.SharpshooterScreen;
 import com.littleezra.ethereal.sound.ModSounds;
+import com.littleezra.ethereal.world.effect.ModMobEffects;
 import com.littleezra.ethereal.world.feature.ModConfiguredFeatures;
 import com.littleezra.ethereal.world.feature.ModPlacedFeatures;
 import com.mojang.logging.LogUtils;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -32,25 +32,18 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
-
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Ethereal.MODID)
 public class Ethereal
 {
-    public static FairyAggressorTrigger FAIRY_AGGRESSOR = null;
+    public static FairyAggressorTrigger  FAIRY_AGGRESSOR = null;
+    public static CnithereaBounceTrigger CNITHEREA_BOUNCE = null;
 
     public static final String MODID = "ethereal";
     private static final Logger LOGGER = LogUtils.getLogger();
-
-    public static List<Player> hurtElderOak = List.of();
 
     public Ethereal()
     {
@@ -70,6 +63,8 @@ public class Ethereal
         ModMenuTypes.register(modEventBus);
         ModLootModifiers.register(modEventBus);
 
+        ModMobEffects.register(modEventBus);
+
         GeckoLib.initialize();
 
         modEventBus.addListener(this::commonSetup);
@@ -82,11 +77,14 @@ public class Ethereal
         event.enqueueWork(() ->{
             ModMessages.register();
             FAIRY_AGGRESSOR = CriteriaTriggers.register(new FairyAggressorTrigger());
+            CNITHEREA_BOUNCE = CriteriaTriggers.register(new CnithereaBounceTrigger());
         });
     }
 
     public static ServerPlayer getServerPlayer(Player player){
-        return player.getServer().getPlayerList().getPlayer(player.getUUID());
+        if (player.getServer() != null)
+            return player.getServer().getPlayerList().getPlayer(player.getUUID());
+        return null;
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent

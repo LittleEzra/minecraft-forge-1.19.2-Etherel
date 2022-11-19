@@ -21,6 +21,9 @@ public class ModSounds {
 
     public static final RegistryObject<SoundEvent> ETHEREAL_JELLYFISH_MOVE = registerSoundEvent("entity.ethereal_jellyfish.move");
 
+    public static final RegistryObject<SoundEvent> ETHEREAL_GUARD_BREAK = registerSoundEvent("effect.ethereal_guard.break");
+    public static final RegistryObject<SoundEvent> ETHEREAL_GUARD_REGEN = registerSoundEvent("effect.ethereal_guard.regenerate");
+
     public static final RegistryObject<SoundEvent> TOTEM_GOLEM_ROOT = registerSoundEvent("entity.totem_golem.root");
     public static final RegistryObject<SoundEvent> TOTEM_GOLEM_AMBIENT = registerSoundEvent("entity.totem_golem.ambient");
     public static final RegistryObject<SoundEvent> TOTEM_GOLEM_HIT = registerSoundEvent("entity.totem_golem.hit");
