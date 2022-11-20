@@ -1,6 +1,6 @@
 {
   "parent": "ethereal:item/mug_item",
   "textures": {
-    "layer0": "ethereal:item/hardy_brew"
+    "layer0": "ethereal:item/ethernogg"
   }
 }

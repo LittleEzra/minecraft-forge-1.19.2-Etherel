@@ -42,7 +42,7 @@ public class ElderOakBlessingEffect extends MobEffect {
     static final float FORCE = 1;
 
     @Override
-    public void applyEffectTick(@NotNull LivingEntity entity, int amplifier)
+    public void applyEffectTick(LivingEntity entity, int amplifier)
     {
         delay -= 1;
 

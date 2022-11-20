@@ -13,7 +13,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.Nullable;
@@ -23,7 +22,7 @@ import java.util.function.Supplier;
 
 public class SearingCocktailItem extends Item {
 
-    private static final Supplier<MobEffectInstance> EFFECT = () -> new MobEffectInstance(ModMobEffects.LAVA_WALKING.get(), 2400, 0);
+    private static final Supplier<MobEffectInstance> EFFECT = () -> new MobEffectInstance(ModMobEffects.SIPHON.get(), 2400, 0);
 
     public SearingCocktailItem(Properties properties) {
         super(properties);

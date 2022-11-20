@@ -14,128 +14,7 @@ public class StarPlacer {
 
     public void placeStar(BlockPos rootPos, BlockState state, BiConsumer<BlockPos, BlockState> biConsumer, RandomSource randomSource, EtherealSapConfiguration configuration)
     {
-        List<BlockPos> positions = new List<BlockPos>() {
-            @Override
-            public int size() {
-                return 0;
-            }
-
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
-
-            @NotNull
-            @Override
-            public Iterator<BlockPos> iterator() {
-                return null;
-            }
-
-            @NotNull
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
-
-            @NotNull
-            @Override
-            public <T> T[] toArray(@NotNull T[] a) {
-                return null;
-            }
-
-            @Override
-            public boolean add(BlockPos blockPos) {
-                return false;
-            }
-
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
-
-            @Override
-            public boolean containsAll(@NotNull Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(@NotNull Collection<? extends BlockPos> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(int index, @NotNull Collection<? extends BlockPos> c) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(@NotNull Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(@NotNull Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public BlockPos get(int index) {
-                return null;
-            }
-
-            @Override
-            public BlockPos set(int index, BlockPos element) {
-                return null;
-            }
-
-            @Override
-            public void add(int index, BlockPos element) {
-
-            }
-
-            @Override
-            public BlockPos remove(int index) {
-                return null;
-            }
-
-            @Override
-            public int indexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public int lastIndexOf(Object o) {
-                return 0;
-            }
-
-            @NotNull
-            @Override
-            public ListIterator<BlockPos> listIterator() {
-                return null;
-            }
-
-            @NotNull
-            @Override
-            public ListIterator<BlockPos> listIterator(int index) {
-                return null;
-            }
-
-            @NotNull
-            @Override
-            public List<BlockPos> subList(int fromIndex, int toIndex) {
-                return null;
-            }
-        };
+        List<BlockPos> positions = new ArrayList<>(List.of());
 
         positions.add(rootPos);
 
@@ -143,151 +22,24 @@ public class StarPlacer {
 
         for (int i = 0; i < size; i++)
         {
-            List<BlockPos> newPositions = new List<BlockPos>() {
-                @Override
-                public int size() {
-                    return 0;
-                }
+            List<BlockPos> newPositions = new ArrayList<>(List.of());
 
-                @Override
-                public boolean isEmpty() {
-                    return false;
-                }
-
-                @Override
-                public boolean contains(Object o) {
-                    return false;
-                }
-
-                @NotNull
-                @Override
-                public Iterator<BlockPos> iterator() {
-                    return null;
-                }
-
-                @NotNull
-                @Override
-                public Object[] toArray() {
-                    return new Object[0];
-                }
-
-                @NotNull
-                @Override
-                public <T> T[] toArray(@NotNull T[] a) {
-                    return null;
-                }
-
-                @Override
-                public boolean add(BlockPos blockPos) {
-                    return false;
-                }
-
-                @Override
-                public boolean remove(Object o) {
-                    return false;
-                }
-
-                @Override
-                public boolean containsAll(@NotNull Collection<?> c) {
-                    return false;
-                }
-
-                @Override
-                public boolean addAll(@NotNull Collection<? extends BlockPos> c) {
-                    return false;
-                }
-
-                @Override
-                public boolean addAll(int index, @NotNull Collection<? extends BlockPos> c) {
-                    return false;
-                }
-
-                @Override
-                public boolean removeAll(@NotNull Collection<?> c) {
-                    return false;
-                }
-
-                @Override
-                public boolean retainAll(@NotNull Collection<?> c) {
-                    return false;
-                }
-
-                @Override
-                public void clear() {
-
-                }
-
-                @Override
-                public BlockPos get(int index) {
-                    return null;
-                }
-
-                @Override
-                public BlockPos set(int index, BlockPos element) {
-                    return null;
-                }
-
-                @Override
-                public void add(int index, BlockPos element) {
-
-                }
-
-                @Override
-                public BlockPos remove(int index) {
-                    return null;
-                }
-
-                @Override
-                public int indexOf(Object o) {
-                    return 0;
-                }
-
-                @Override
-                public int lastIndexOf(Object o) {
-                    return 0;
-                }
-
-                @NotNull
-                @Override
-                public ListIterator<BlockPos> listIterator() {
-                    return null;
-                }
-
-                @NotNull
-                @Override
-                public ListIterator<BlockPos> listIterator(int index) {
-                    return null;
-                }
-
-                @NotNull
-                @Override
-                public List<BlockPos> subList(int fromIndex, int toIndex) {
-                    return null;
-                }
-            };
             for (int pI = 0; pI < positions.size(); pI++){
                 BlockPos position = positions.get(pI);
                 BlockPos[] neighbours = getNeighbours(position);
-                for (int nI = 0; nI < neighbours.length; nI++)
-                {
-                    BlockPos neighbour = neighbours[nI];
-                    if (!positions.contains(neighbour))
-                    {newPositions.add(neighbour);}
+                for (BlockPos neighbour : neighbours) {
+                    if (!positions.contains(neighbour)) {
+                        newPositions.add(neighbour);
+                    }
                 }
             }
 
-            for (int nI = 0; nI < newPositions.size(); nI++)
-            {
-                BlockPos neighbour = newPositions.get(nI);
-                positions.add(neighbour);
-            }
+            positions.addAll(newPositions);
         }
 
-        for (int i = 0; i < positions.size(); i++){
-            tryPlaceBlock(biConsumer, positions.get(i), state, configuration, randomSource);
+        for (BlockPos position : positions) {
+            tryPlaceBlock(biConsumer, position, state, configuration, randomSource);
         }
-
-
     }
 
     public int getRandomNumber(int min, int max){

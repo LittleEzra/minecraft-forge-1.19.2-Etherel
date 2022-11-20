@@ -5,6 +5,7 @@ import com.littleezra.ethereal.block.ModBlocks;
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
 import com.littleezra.ethereal.world.level.levelgen.feature.configurations.EtherealSapConfiguration;
+import com.littleezra.ethereal.world.level.levelgen.feature.placers.StarPlacer;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -43,7 +44,7 @@ public class ModConfiguredFeatures {
             () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ENDSTONE_ETHEREAL_SAP.get(), 7)));
 
     //public static final RegistryObject<ConfiguredFeature<?, ?>> ETHEREAL_STAR = CONFIGURED_FEATURES.register("ethereal_star", () -> new ConfiguredFeature<>(Feature.DELTA_FEATURE,
-    //        new EtherealSapConfiguration.EtherealSapConfigurationBuilder(
+    //       new EtherealSapConfiguration.EtherealSapConfigurationBuilder(
     //                BlockStateProvider.simple(ModBlocks.ETHEREAL_SAP_BLOCK.get()))
     //               .build()));
 

@@ -23,8 +23,10 @@ public class ModItems
     private static final Supplier<MobEffectInstance> etherealEffect = () -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 1);
     private static final Supplier<MobEffectInstance> necroticEffect = () -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 2);
     private static final Supplier<MobEffectInstance> verdantEffect  = () -> new MobEffectInstance(MobEffects.ABSORPTION, 500, 2);
-    private static final Supplier<MobEffectInstance> SEARING_COCKTAIL_EFFECT = () -> new MobEffectInstance(ModMobEffects.LAVA_WALKING.get(), 2400, 0);
-    private static final Supplier<MobEffectInstance> HARDY_BREW_EFFECT = () -> new MobEffectInstance(ModMobEffects.ELDER_OAK_BLESSING.get(), 2400, 0);
+    private static final Supplier<MobEffectInstance> ETHERNOGG_EFFECT = () -> new MobEffectInstance(ModMobEffects.ETHEREAL_GUARD.get(), 4800, 0);
+    private static final Supplier<MobEffectInstance> SEARING_COCKTAIL_EFFECT = () -> new MobEffectInstance(ModMobEffects.SIPHON.get(), 4800, 0);
+    private static final Supplier<MobEffectInstance> HARDY_BREW_EFFECT = () -> new MobEffectInstance(ModMobEffects.VITALITY.get(), 4800, 0);
+    private static final Supplier<MobEffectInstance> ICHOR_EFFECT = () -> new MobEffectInstance(ModMobEffects.ELDER_OAK_BLESSING.get(), 4800, 0);
 
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Ethereal.MODID);
@@ -49,6 +51,9 @@ public class ModItems
 
     public static final RegistryObject<Item> GHAST_SNARE = ITEMS.register("ghast_snare",
             () -> new BlockItem(ModBlocks.GHAST_SNARE.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+
+    public static final RegistryObject<Item> ETHERNOGG = ITEMS.register("ethernogg",
+            () -> new ModPotionItem(new Item.Properties().tab(CreativeModeTab.TAB_BREWING), ETHERNOGG_EFFECT));
 
     public static final RegistryObject<Item> CNITHEREA_SPAWN_EGG = ITEMS.register("cnitherea_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.CNITHEREA, 0x6495d0, 0xa3e1ff, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
@@ -85,6 +90,9 @@ public class ModItems
 
     public static final RegistryObject<Item> HARDY_BREW = ITEMS.register("hardy_brew",
             () -> new ModPotionItem(new Item.Properties().tab(CreativeModeTab.TAB_BREWING), HARDY_BREW_EFFECT));
+
+    public static final RegistryObject<Item> ICHOR = ITEMS.register("ichor",
+            () -> new ModPotionItem(new Item.Properties().tab(CreativeModeTab.TAB_BREWING), ICHOR_EFFECT));
 
     // MISC
 

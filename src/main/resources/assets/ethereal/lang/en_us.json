@@ -9,7 +9,11 @@
   "item.ethereal.verdant_concentrate": "Verdant Concentrate",
   "item.ethereal.sculk_heart": "Sculk Heart",
   "item.ethereal.music_disc_aether": "Music Disc",
+
   "item.ethereal.hardy_brew": "Hardy Brew",
+  "item.ethereal.searing_cocktail": "Searing Cocktail",
+  "item.ethereal.ethernogg": "Ethernogg",
+  "item.ethereal.ichor": "Ichor",
 
   "block.ethereal.ethereal_sap_block": "Block of Ethereal Sap",
   "block.ethereal.verdant_sap_block": "Block of Verdant Sap",
@@ -57,10 +61,11 @@
   "entity.ethereal.fairyfly": "Fairyfly",
   "entity.ethereal.bushhog": "Bushhog",
 
-  "effect.ethereal.lava_walking": "Lava Walking",
+  "effect.ethereal.siphon": "Siphon",
   "effect.ethereal.ethereal_guard": "Ethereal Guard",
   "effect.ethereal.elder_oak_blessing": "Sacred Blessing",
   "effect.ethereal.elder_oak_curse": "Elder Oaks Curse",
+  "effect.ethereal.vitality": "Vitality",
 
   "itemGroup.etherealtab": "Ethereal",
 

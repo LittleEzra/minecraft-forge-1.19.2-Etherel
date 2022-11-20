@@ -43,6 +43,18 @@
     ]
   },
 
+  "effect.siphon": {
+    "sounds": [
+      { "name": "ethereal:effect/siphon0" },
+      { "name": "ethereal:effect/siphon1" },
+      { "name": "ethereal:effect/siphon1", "pitch": 1.1 },
+      { "name": "ethereal:effect/siphon2" },
+      { "name": "ethereal:effect/siphon2", "pitch": 0.9 },
+      { "name": "ethereal:effect/siphon3" },
+      { "name": "ethereal:effect/siphon3", "pitch": 0.9 }
+    ]
+  },
+
   "block.ethereal_sap.break": {
     "sounds": [
       { "name": "ethereal:block/ethereal_sap/ethereal_sap_break0" },

@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "ethereal:ichor"
+    },
+    "title": "Blood of the Gods",
+    "description": "Drink a jug of sweet ichor"
+  },
+  "parent": "ethereal:drink_alcohol",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "ethereal:ichor"
+          ]
+        }
+      }
+    }
+  }
+}

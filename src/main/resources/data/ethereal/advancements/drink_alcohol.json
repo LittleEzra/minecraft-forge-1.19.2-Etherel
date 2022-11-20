@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "ethereal:hardy_brew"
+    },
+    "title": "This is some damn good poison!",
+    "description": "Drink an oddly delicious poison"
+  },
+  "parent": "minecraft:husbandry/root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "ethereal:searing_cocktail",
+            "ethereal:ethernogg",
+            "ethereal:hardy_brew"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -14,11 +14,14 @@ public class ModMobEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS =
             DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, Ethereal.MODID);
 
-    public static final RegistryObject<MobEffect> LAVA_WALKING = MOB_EFFECTS.register("lava_walking", () ->
-            new LavaWalkMobEffect(MobEffectCategory.BENEFICIAL, 16737307));
+    public static final RegistryObject<MobEffect> SIPHON = MOB_EFFECTS.register("siphon", () ->
+            new SiphonEffect(MobEffectCategory.BENEFICIAL, getColor("#ae2334")));
 
     public static final RegistryObject<MobEffect> ETHEREAL_GUARD = MOB_EFFECTS.register("ethereal_guard", () ->
             new EtherealGuardEffect(MobEffectCategory.BENEFICIAL, getColor("#6495d0")));
+
+    public static final RegistryObject<MobEffect> VITALITY = MOB_EFFECTS.register("vitality", () ->
+            new ElderOakCurseEffect(MobEffectCategory.BENEFICIAL, getColor("#fad64a")));
 
     public static final RegistryObject<MobEffect> ELDER_OAK_BLESSING = MOB_EFFECTS.register("elder_oak_blessing", () ->
             new ElderOakBlessingEffect(MobEffectCategory.BENEFICIAL, getColor("#ffc766")));

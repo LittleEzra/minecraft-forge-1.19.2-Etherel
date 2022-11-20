@@ -3,6 +3,7 @@ package com.littleezra.ethereal.world.effect;
 import com.littleezra.ethereal.sound.ModSounds;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,7 +21,10 @@ public class EtherealGuardEffect extends MobEffect {
 
     public static Map<UUID, Integer> cooldowns = new HashMap<>();
 
-    public static final int DELAY = 240;
+    public static final int MIN_DELAY = 60;
+    public static final int MAX_DELAY = 240;
+    public static final float MAX_ABSORPTION = 15f;
+    public static final float MIN_ABSORPTION = 2f;
 
     @Override
     public void applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
@@ -81,6 +85,10 @@ public class EtherealGuardEffect extends MobEffect {
     public static void setCooldown(UUID uuid, int value){
         cooldowns.putIfAbsent(uuid, 10);
         cooldowns.put(uuid, value);
+    }
+
+    public static int getDelay(int amplifier){
+        return  Math.max((MAX_DELAY - (10 * amplifier)), MIN_DELAY);
     }
 
     @Override
