@@ -154,7 +154,7 @@ public class Fairyfly extends PathfinderMob implements IAnimatable, IFairy
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event)
     {
-        if (this.getSpeed() > 0){
+        if (event.isMoving() || this.getDeltaMovement().length() > 0D){
             event.getController().setAnimation(new AnimationBuilder().addAnimation("fairyfly.animation.move", ILoopType.EDefaultLoopTypes.LOOP));
         }
         else {

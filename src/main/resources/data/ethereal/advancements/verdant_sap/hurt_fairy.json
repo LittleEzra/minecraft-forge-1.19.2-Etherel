@@ -20,5 +20,10 @@
         ]
       }
     }
+  },
+  "rewards": {
+    "recipes": [
+      "ethereal:ambrosia"
+    ]
   }
 }

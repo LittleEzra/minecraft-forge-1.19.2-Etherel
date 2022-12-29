@@ -39,7 +39,7 @@
       { "name": "ethereal:effect/ethereal_guard_regen1" },
       { "name": "ethereal:effect/ethereal_guard_regen1", "pitch": 1.1 },
       { "name": "ethereal:effect/ethereal_guard_regen2" },
-      { "name": "ethereal:effect/ethereal_guard_regen", "pitch": 0.9 }
+      { "name": "ethereal:effect/ethereal_guard_regen2", "pitch": 0.9 }
     ]
   },
 
@@ -169,5 +169,56 @@
         "sounds": [
         { "name": "ethereal:entity/totem_golem/totem_golem_root" }
         ]
-      }
+      },
+
+  "entity.small_robot.ambient": {
+    "sounds": [
+      { "name": "ethereal:entity/robot/small_robot_ambient_0" },
+      { "name": "ethereal:entity/robot/small_robot_ambient_1" },
+      { "name": "ethereal:entity/robot/small_robot_ambient_2" },
+      { "name": "ethereal:entity/robot/small_robot_ambient_3", "pitch": 0.9  },
+      { "name": "ethereal:entity/robot/small_robot_ambient_3" },
+      { "name": "ethereal:entity/robot/small_robot_ambient_4", "pitch": 0.9 },
+      { "name": "ethereal:entity/robot/small_robot_ambient_4" }
+    ]
+  },
+
+
+  "entity.heavy_robot.ambient": {
+    "sounds": [
+      { "name": "ethereal:entity/robot/robot_ambient_0" },
+      { "name": "ethereal:entity/robot/robot_ambient_1" },
+      { "name": "ethereal:entity/robot/robot_ambient_2" },
+      { "name": "ethereal:entity/robot/robot_ambient_3", "pitch": 0.9  },
+      { "name": "ethereal:entity/robot/robot_ambient_3" },
+      { "name": "ethereal:entity/robot/robot_ambient_4", "pitch": 0.9 },
+      { "name": "ethereal:entity/robot/robot_ambient_4" }
+    ]
+  },
+
+  "entity.small_robot.hit": {
+    "sounds": [
+      { "name": "ethereal:entity/robot/robot_hit_0" },
+      { "name": "ethereal:entity/robot/robot_hit_1", "pitch": 0.9  },
+      { "name": "ethereal:entity/robot/robot_hit_1" },
+      { "name": "ethereal:entity/robot/robot_hit_2", "pitch": 0.9 },
+      { "name": "ethereal:entity/robot/robot_hit_2" }
+    ]
+  },
+
+  "entity.heavy_robot.hit": {
+    "sounds": [
+      { "name": "ethereal:entity/robot/robot_hit_0" },
+      { "name": "ethereal:entity/robot/robot_hit_1", "pitch": 0.9  },
+      { "name": "ethereal:entity/robot/robot_hit_1" },
+      { "name": "ethereal:entity/robot/robot_hit_2", "pitch": 0.9 },
+      { "name": "ethereal:entity/robot/robot_hit_2" }
+    ]
+  },
+
+  "entity.pyrodrone.shoot": {
+    "sounds": [
+      { "name": "ethereal:entity/robot/pyrodrone_shoot" }
+    ]
+  }
 }

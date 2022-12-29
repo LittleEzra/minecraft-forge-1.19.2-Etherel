@@ -1,0 +1,7 @@
+{
+  "render_type": "cutout",
+  "parent": "ethereal:block/sheen_bloom",
+  "textures": {
+  "cross": "ethereal:block/sheen_bloom_5"
+  }
+}

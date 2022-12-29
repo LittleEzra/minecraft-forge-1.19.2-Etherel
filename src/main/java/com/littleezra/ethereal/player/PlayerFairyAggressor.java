@@ -4,22 +4,35 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.capabilities.AutoRegisterCapability;
 
 public class PlayerFairyAggressor {
-    private boolean hurtOak;
-    private boolean hurtFairy;
+    private int hurtOak;
+    private int hurtFairy;
 
-    public boolean getHurtOak(){
+    public int getHurtOak(){
         return hurtOak;
     }
-    public boolean getHurtFairy(){
+    public int getHurtFairy(){
         return hurtFairy;
     }
 
-    public void setHurtOak(boolean hurtOak) {
+    public void setHurtOak(int hurtOak) {
         this.hurtOak = hurtOak;
     }
 
-    public void setHurtFairy(boolean hurtFairy) {
+    public void setHurtFairy(int hurtFairy) {
         this.hurtFairy = hurtFairy;
+    }
+
+    public void addHurtOak(int value){
+        hurtOak += value;
+    }
+    public void addHurtFairy(int value){
+        hurtFairy += value;
+    }
+    public void subHurtOak(int value){
+        hurtOak -= value;
+    }
+    public void subHurtFairy(int value){
+        hurtFairy -= value;
     }
 
     public void copyFrom(PlayerFairyAggressor source){
@@ -28,12 +41,12 @@ public class PlayerFairyAggressor {
     }
 
     public void saveNBTData(CompoundTag nbt){
-        nbt.putBoolean("hurtOak", hurtOak);
-        nbt.putBoolean("hurtFairy", hurtFairy);
+        nbt.putInt("hurtOak", hurtOak);
+        nbt.putInt("hurtFairy", hurtFairy);
     }
 
     public void loadNBTData(CompoundTag nbt){
-        hurtOak = nbt.getBoolean("hurtOak");
-        hurtFairy = nbt.getBoolean("hurtFairy");
+        hurtOak = nbt.getInt("hurtOak");
+        hurtFairy = nbt.getInt("hurtFairy");
     }
 }

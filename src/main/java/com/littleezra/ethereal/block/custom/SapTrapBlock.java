@@ -38,8 +38,8 @@ public class SapTrapBlock extends Block {
     public static final BooleanProperty NATURAL = BooleanProperty.create("natural");
     public static final DamageSource ETHEREAL_SPIKE_DAMAGE = new DamageSource("ethereal_spike_damage");
 
-    public static final VoxelShape ACTIVATED_SHAPE = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D);
-    public static final VoxelShape DEACTIVATED_SHAPE = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 2.0D, 10.0D);
+    public static final VoxelShape ACTIVATED_SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 10.0D, 13.0D);
+    public static final VoxelShape DEACTIVATED_SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 2.0D, 13.0D);
 
     public SapTrapBlock(Properties properties) {
         super(properties);

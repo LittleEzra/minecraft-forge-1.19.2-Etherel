@@ -2,6 +2,7 @@ package com.littleezra.ethereal.advancements.critereon;
 
 import com.google.gson.JsonObject;
 import com.littleezra.ethereal.Ethereal;
+import com.littleezra.ethereal.entity.custom.IFairy;
 import com.littleezra.ethereal.player.PlayerFairyAggressor;
 import com.littleezra.ethereal.player.PlayerFairyAggressorProvider;
 import net.minecraft.advancements.CriterionTrigger;
@@ -33,23 +34,8 @@ public class FairyAggressorTrigger extends SimpleCriterionTrigger<FairyAggressor
 
     public void trigger(ServerPlayer serverPlayer) {
         this.trigger(serverPlayer, (instance) -> {
-            return isAggressor(serverPlayer);
+            return IFairy.playerIsMildAggressor(serverPlayer);
         });
-    }
-
-    public boolean isAggressor(ServerPlayer player){
-
-        boolean isAggressor = false;
-        PlayerFairyAggressor aggressor;
-
-        LazyOptional<PlayerFairyAggressor> lazyOptional = player.getCapability(PlayerFairyAggressorProvider.PLAYER_FAIRY_AGGRESSOR);
-        aggressor = lazyOptional.orElseGet(() -> null);
-
-        if (lazyOptional.isPresent()){
-            isAggressor = aggressor.getHurtFairy() || aggressor.getHurtOak();
-        }
-
-        return isAggressor;
     }
 
     public static class TriggerInstance extends AbstractCriterionTriggerInstance {

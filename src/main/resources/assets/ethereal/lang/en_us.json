@@ -10,6 +10,10 @@
   "item.ethereal.sculk_heart": "Sculk Heart",
   "item.ethereal.music_disc_aether": "Music Disc",
 
+  "item.ethereal.shimmer_fruit": "Shimmer Fruit",
+  "item.ethereal.shimmer_flower": "Shimmer Flower",
+  "item.ethereal.ambrosia": "Ambrosia",
+
   "item.ethereal.hardy_brew": "Hardy Brew",
   "item.ethereal.searing_cocktail": "Searing Cocktail",
   "item.ethereal.ethernogg": "Ethernogg",
@@ -22,7 +26,7 @@
   "block.ethereal.chiseled_ethereal_plating": "Chiseled Ethereal Plating",
   "block.ethereal.ethereal_bricks": "Ethereal Bricks",
   "block.ethereal.ethereal_torch": "Ethereal Torch",
-  "block.ethereal.ethereal_spike": "Sap Trap",
+  "block.ethereal.sap_trap": "Sap Trap",
   "block.ethereal.ghast_snare": "Ghast Snare",
   "block.ethereal.sharpshooter": "Sharpshooter",
   "block.ethereal.amber_block": "Block of Amber",
@@ -50,22 +54,32 @@
   "block.ethereal.treated_fence_gate": "Treated Fence Gate",
   "block.ethereal.rich_sapling": "Rich Sapling",
   "block.ethereal.elder_wood": "Elder Wood",
+  "block.ethereal.elder_vine": "Elder Vine",
+  "block.ethereal.sheen_bloom": "Sheen Bloom",
+
+  "block.ethereal.gildblossom": "Gildblossom",
+  "block.ethereal.potted_gildblossom": "Gildblossom",
 
   "item.ethereal.cnitherea_spawn_egg": "Cnitherea Spawn Egg",
   "item.ethereal.totem_golem_spawn_egg": "Totem Golem Spawn Egg",
   "item.ethereal.fairyfly_spawn_egg": "Fairyfly Spawn Egg",
   "item.ethereal.bushhog_spawn_egg": "Bushhog Spawn Egg",
+  "item.ethereal.pyrodrone_spawn_egg": "Pyrodrone Spawn Egg",
+  "item.ethereal.loder_spawn_egg": "Loder Spawn Egg",
 
   "entity.ethereal.cnitherea": "Cnitherea",
   "entity.ethereal.totem_golem": "Totem Golem",
   "entity.ethereal.fairyfly": "Fairyfly",
   "entity.ethereal.bushhog": "Bushhog",
+  "entity.ethereal.pyrodrone": "Pyrodrone",
+  "entity.ethereal.loder": "Loder",
 
   "effect.ethereal.siphon": "Siphon",
   "effect.ethereal.ethereal_guard": "Ethereal Guard",
   "effect.ethereal.elder_oak_blessing": "Sacred Blessing",
   "effect.ethereal.elder_oak_curse": "Elder Oaks Curse",
   "effect.ethereal.vitality": "Vitality",
+  "effect.ethereal.stifled_mouth": "Stifled Mouth",
 
   "itemGroup.etherealtab": "Ethereal",
 
@@ -73,5 +87,9 @@
   "death.attack.bushhog_damage": "%1$s tried to pet a bushhog",
   "death.attack.elder_oak_curse": "%1$s was punished by the Elder Oak",
   "death.attack.elder_oak_curse.player": "%1$s was punished by the Elder Oak",
-  "death.attack.elder_oak_blessing": "%1$s was killed by the Elder Oak"
+  "death.attack.elder_oak_blessing": "%1$s was killed by the Elder Oak",
+  "death.attack.recoil_curse_damage": "%1$s was hit by the recoil",
+  "death.attack.recoil_curse_damage.player": "%1$s was hit by the recoil",
+
+  "enchantment.ethereal.recoil_curse": "Curse of Recoil"
 }

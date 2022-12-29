@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "ethereal:ambrosia"
+    },
+    "title": "Atonement",
+    "description": "Drink a bowl of Ambrosia to correct your sins"
+  },
+  "parent": "ethereal:verdant_sap/hurt_fairy",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "ethereal:ambrosia"
+          ]
+        }
+      }
+    }
+  }
+}

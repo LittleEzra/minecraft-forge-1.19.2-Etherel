@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "minecraft:small_end_islands",
+  "spawners": {
+    "type": "ethereal:cnitherea",
+    "weight": 750,
+    "minCount": 1,
+    "maxCount": 5
+  }
+}

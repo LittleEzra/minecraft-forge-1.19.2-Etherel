@@ -25,7 +25,7 @@ public class ModItems
     private static final Supplier<MobEffectInstance> verdantEffect  = () -> new MobEffectInstance(MobEffects.ABSORPTION, 500, 2);
     private static final Supplier<MobEffectInstance> ETHERNOGG_EFFECT = () -> new MobEffectInstance(ModMobEffects.ETHEREAL_GUARD.get(), 4800, 0);
     private static final Supplier<MobEffectInstance> SEARING_COCKTAIL_EFFECT = () -> new MobEffectInstance(ModMobEffects.SIPHON.get(), 4800, 0);
-    private static final Supplier<MobEffectInstance> HARDY_BREW_EFFECT = () -> new MobEffectInstance(ModMobEffects.VITALITY.get(), 4800, 0);
+    private static final Supplier<MobEffectInstance> HARDY_BREW_EFFECT = () -> new MobEffectInstance(ModMobEffects.VITALITY.get(), 4800, 1);
     private static final Supplier<MobEffectInstance> ICHOR_EFFECT = () -> new MobEffectInstance(ModMobEffects.ELDER_OAK_BLESSING.get(), 4800, 0);
 
     public static final DeferredRegister<Item> ITEMS =
@@ -36,7 +36,7 @@ public class ModItems
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     public static final RegistryObject<Item> MUSIC_DISC_AETHER = ITEMS.register("music_disc_aether",
-            () -> new ModRecordItem(0, ModSounds.MUSIC_DISC_AETHER::get,
+            () -> new ModRecordItem(0, ModSounds.MUSIC_DISC_AETHER,
                     new Item.Properties().tab(CreativeModeTab.TAB_MISC).rarity(Rarity.RARE).stacksTo(1), 1840, "LittleEzra - Aether"));
 
     public static final RegistryObject<Item> ETHEREAL_CONCENTRATE = ITEMS.register("ethereal_concentrate",
@@ -46,8 +46,8 @@ public class ModItems
     public static final RegistryObject<Item> ETHEREAL_TORCH = ITEMS.register("ethereal_torch",
             () -> new StandingAndWallBlockItem(ModBlocks.ETHEREAL_TORCH.get(), ModBlocks.ETHEREAL_WALL_TORCH.get(), (new Item.Properties()).tab(CreativeModeTab.TAB_DECORATIONS)));
 
-    public static final RegistryObject<Item> ETHEREAL_SPIKE = ITEMS.register("ethereal_spike",
-            () -> new BlockItem(ModBlocks.ETHEREAL_SPIKE.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+    public static final RegistryObject<Item> SAP_TRAP = ITEMS.register("sap_trap",
+            () -> new BlockItem(ModBlocks.SAP_TRAP.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
 
     public static final RegistryObject<Item> GHAST_SNARE = ITEMS.register("ghast_snare",
             () -> new BlockItem(ModBlocks.GHAST_SNARE.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
@@ -63,6 +63,10 @@ public class ModItems
             () -> new ForgeSpawnEggItem(ModEntityTypes.FAIRYFLY, 0xc3a9db, 0xffd695, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     public static final RegistryObject<Item> BUSHHOG_SPAWN_EGG = ITEMS.register("bushhog_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.BUSHHOG, 0x6c8031, 0x9c8067, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> PYRODRONE_SPAWN_EGG = ITEMS.register("pyrodrone_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.PYRODRONE, 0x4d494d, 0xc85a88, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> LODER_SPAWN_EGG = ITEMS.register("loder_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.LODER, 0x3b393b, 0xfca790, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     // NECROTIC SAP
 
@@ -93,6 +97,18 @@ public class ModItems
 
     public static final RegistryObject<Item> ICHOR = ITEMS.register("ichor",
             () -> new ModPotionItem(new Item.Properties().tab(CreativeModeTab.TAB_BREWING), ICHOR_EFFECT));
+
+    public static final RegistryObject<Item> SHIMMER_FRUIT = ITEMS.register("shimmer_fruit",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(
+                    new FoodProperties.Builder().effect(() -> new MobEffectInstance(ModMobEffects.VITALITY.get(), 600, 0), 1f)
+                            .alwaysEat().nutrition(5).saturationMod(1f).build())));
+
+    public static final RegistryObject<Item> SHIMMER_FLOWER = ITEMS.register("shimmer_flower",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<Item> AMBROSIA = ITEMS.register("ambrosia",
+            () -> new AmbrosiaItem(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).stacksTo(8).food(
+                    new FoodProperties.Builder().alwaysEat().nutrition(4).saturationMod(.5f).build())));
 
     // MISC
 

@@ -21,6 +21,12 @@ public class ModSounds {
 
     public static final RegistryObject<SoundEvent> ETHEREAL_JELLYFISH_MOVE = registerSoundEvent("entity.ethereal_jellyfish.move");
 
+    public static final RegistryObject<SoundEvent> PYRODRONE_SHOOT = registerSoundEvent("entity.pyrodrone.shoot");
+    public static final RegistryObject<SoundEvent> SMALL_ROBOT_AMBIENT = registerSoundEvent("entity.small_robot.ambient");
+    public static final RegistryObject<SoundEvent> HEAVY_ROBOT_AMBIENT = registerSoundEvent("entity.heavy_robot.ambient");
+    public static final RegistryObject<SoundEvent> SMALL_ROBOT_HIT = registerSoundEvent("entity.small_robot.hit");
+    public static final RegistryObject<SoundEvent> HEAVY_ROBOT_HIT = registerSoundEvent("entity.heavy_robot.hit");
+
     public static final RegistryObject<SoundEvent> TOTEM_GOLEM_ROOT = registerSoundEvent("entity.totem_golem.root");
     public static final RegistryObject<SoundEvent> TOTEM_GOLEM_AMBIENT = registerSoundEvent("entity.totem_golem.ambient");
     public static final RegistryObject<SoundEvent> TOTEM_GOLEM_HIT = registerSoundEvent("entity.totem_golem.hit");

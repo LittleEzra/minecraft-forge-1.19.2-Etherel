@@ -32,7 +32,7 @@ public class EtherealFlameParticle extends RisingParticle {
         int i = super.getLightColor(p_106821_);
         int j = i & 255;
         int k = i >> 16 & 255;
-        j += (int)(f * 15.0F * 16.0F);
+        j += (int)(f * 10.0F * 11.0F);
         if (j > 240) {
             j = 240;
         }

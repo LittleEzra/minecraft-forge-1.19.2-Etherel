@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "ethereal:ethereal_concentrate"
+    },
+    {
+      "item": "ethereal:ethereal_concentrate"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:popped_chorus_fruit"
+    }
+  ],
+  "result": {
+    "item": "ethereal:ethernogg"
+  }
+}

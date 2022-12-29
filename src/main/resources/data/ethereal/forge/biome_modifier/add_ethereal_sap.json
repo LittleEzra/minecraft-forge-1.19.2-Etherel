@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": ["minecraft:end_barrens", "minecraft:end_midlands", "minecraft:end_highlands"],
-  "features": "ethereal:ethereal_sap_placed",
-  "step": "underground_ores"
-}

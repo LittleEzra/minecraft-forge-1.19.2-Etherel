@@ -2,7 +2,7 @@
 	"format_version": "1.8.0",
 	"animations": {
 		"cnitherea.animation.move": {
-			"loop": true,
+			"loop": "hold_on_last_frame",
 			"animation_length": 1,
 			"blend_weight": "1",
 			"bones": {
@@ -67,10 +67,6 @@
 						"0.3333": {
 							"vector": [0, 0, 5]
 						},
-						"0.9167": {
-							"vector": [0, 0, 5],
-							"easing": "easeInQuad"
-						},
 						"1.0": {
 							"vector": [0, 0, 0],
 							"easing": "easeInQuad"
@@ -97,10 +93,6 @@
 						},
 						"0.3333": {
 							"vector": [0, 0, 7.5]
-						},
-						"0.9167": {
-							"vector": [0, 0, 7.5],
-							"easing": "easeInQuad"
 						},
 						"1.0": {
 							"vector": [0, 0, 0],
@@ -133,10 +125,6 @@
 						"0.3333": {
 							"vector": [0, 0, -5]
 						},
-						"0.9167": {
-							"vector": [0, 0, -5],
-							"easing": "easeInQuad"
-						},
 						"1.0": {
 							"vector": [0, 0, 0],
 							"easing": "easeInQuad"
@@ -154,10 +142,6 @@
 						},
 						"0.3333": {
 							"vector": [0, 0, -7.5]
-						},
-						"0.9167": {
-							"vector": [0, 0, -7.5],
-							"easing": "easeInQuad"
 						},
 						"1.0": {
 							"vector": [0, 0, 0],
@@ -262,6 +246,9 @@
 					}
 				}
 			}
+		},
+		"cnitherea.animation.idle": {
+			"loop": true
 		}
 	},
 	"geckolib_format_version": 2

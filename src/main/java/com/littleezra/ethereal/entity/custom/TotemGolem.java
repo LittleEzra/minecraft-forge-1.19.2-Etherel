@@ -52,8 +52,10 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Supplier;
 
 public class TotemGolem extends AbstractGolem implements IAnimatable, OwnableEntity {
 
@@ -63,7 +65,7 @@ public class TotemGolem extends AbstractGolem implements IAnimatable, OwnableEnt
     private boolean orderedToSit;
     private boolean hasPlayedRoot;
 
-    private static MobEffectInstance effect = new MobEffectInstance(MobEffects.REGENERATION, 100, 2);
+    private static Supplier<MobEffectInstance> effect = () -> new MobEffectInstance(MobEffects.REGENERATION, 100, 2);
 
     public TotemGolem(EntityType<? extends AbstractGolem> p_27508_, Level p_27509_) {
         super(p_27508_, p_27509_);
@@ -150,8 +152,18 @@ public class TotemGolem extends AbstractGolem implements IAnimatable, OwnableEnt
     public void tick() {
         super.tick();
 
-        if (isRooted() && getOwner() != null && !getOwner().hasEffect(MobEffects.REGENERATION)){
-            getOwner().addEffect(new MobEffectInstance(effect));
+        if (isRooted() && getOwner() != null){
+            List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, getBoundingBox().inflate(8));
+
+            for (LivingEntity entity : entities){
+                if (!entity.hasEffect(MobEffects.REGENERATION)){
+                    if (getOwner().getTeam() != null && entity.getTeam() == getOwner().getTeam()){
+                        entity.addEffect(effect.get());
+                    } else if (getOwner().getTeam() == null){
+                        getOwner().addEffect(effect.get());
+                    }
+                }
+            }
         }
     }
 
@@ -162,15 +174,15 @@ public class TotemGolem extends AbstractGolem implements IAnimatable, OwnableEnt
         this.entityData.set(DATA_IS_ROOTED, value);
     }
 
-    public void setOwnerUUID(@javax.annotation.Nullable UUID p_21817_) {
-        this.entityData.set(DATA_OWNER_ID, Optional.ofNullable(p_21817_));
+    public void setOwnerUUID(@Nullable UUID uuid) {
+        this.entityData.set(DATA_OWNER_ID, Optional.ofNullable(uuid));
     }
-    @javax.annotation.Nullable
+    @Nullable
     public UUID getOwnerUUID() {
         return this.entityData.get(DATA_OWNER_ID).orElse((UUID)null);
     }
 
-    @javax.annotation.Nullable
+    @Nullable
     public LivingEntity getOwner() {
         try {
             UUID uuid = this.getOwnerUUID();
@@ -194,16 +206,7 @@ public class TotemGolem extends AbstractGolem implements IAnimatable, OwnableEnt
         ILoopType.EDefaultLoopTypes playOnce = ILoopType.EDefaultLoopTypes.PLAY_ONCE;
 
         if (this.isRooted()){
-            if (!this.hasPlayedRoot()){
-                this.setPlayedRoot(true);
-                event.getController().clearAnimationCache();
-
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("totem_golem.animation.root", playOnce));
-                playSound(ModSounds.TOTEM_GOLEM_ROOT.get());
-
-            } else{
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("totem_golem.animation.rooted", loop));
-            }
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("totem_golem.animation.rooted", loop));
             return PlayState.CONTINUE;
         }
         else if (event.isMoving()){
@@ -220,13 +223,12 @@ public class TotemGolem extends AbstractGolem implements IAnimatable, OwnableEnt
 
     private PlayState rootPredicate(AnimationEvent event) {
 
-        if (this.isRooted() && !this.hasPlayedRoot())
+        if (this.isRooted() && !this.hasPlayedRoot() && event.getController().getAnimationState().equals(AnimationState.Stopped))
         {
+            event.getController().markNeedsReload();
             event.getController().setAnimation(new AnimationBuilder().addAnimation("totem_golem.animation.root", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
 
             this.setPlayedRoot(true);
-
-            return PlayState.CONTINUE;
         }
         return PlayState.CONTINUE;
     }
@@ -235,8 +237,8 @@ public class TotemGolem extends AbstractGolem implements IAnimatable, OwnableEnt
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController(this, "controller",
                 0, this::predicate));
-        //data.addAnimationController(new AnimationController(this, "rootController",
-        //        0, this::rootPredicate));
+        data.addAnimationController(new AnimationController(this, "rootController",
+                0, this::rootPredicate));
     }
 
     @Override

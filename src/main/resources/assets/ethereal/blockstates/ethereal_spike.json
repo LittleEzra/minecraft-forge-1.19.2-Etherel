@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "activated=true":  {"model":  "ethereal:block/ethereal_spike_activated"},
-    "activated=false": {"model":  "ethereal:block/ethereal_spike_deactivated"}
-  }
-}

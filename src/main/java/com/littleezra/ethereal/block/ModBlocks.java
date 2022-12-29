@@ -3,11 +3,15 @@ package com.littleezra.ethereal.block;
 import com.littleezra.ethereal.Ethereal;
 import com.littleezra.ethereal.block.custom.*;
 import com.littleezra.ethereal.item.ModItems;
+import com.littleezra.ethereal.particle.ModParticles;
 import com.littleezra.ethereal.sound.ModSounds;
 import com.littleezra.ethereal.world.feature.tree.RichTreeGrower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -32,11 +36,13 @@ public class ModBlocks
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, Ethereal.MODID);
 
+    private static final Supplier<ParticleOptions> ETHEREAL_FLAME_PARTICLES = () -> ModParticles.ETHEREAL_FLAME.get();
+
     // ETHEREAL SAP
 
     public static final RegistryObject<Block> ETHEREAL_SAP_BLOCK = registerBlock("ethereal_sap_block",
             () -> new SapBlock(BlockBehaviour.Properties.of(Material.GLASS)
-                    .strength(4f).requiresCorrectToolForDrops().noOcclusion().noCollission().sound(ModSounds.ETHEREAL_SAP_BLOCK).explosionResistance(1400f), new Vec3(1, 1, 1)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+                    .strength(3f).requiresCorrectToolForDrops().noOcclusion().noCollission().sound(ModSounds.ETHEREAL_SAP_BLOCK).explosionResistance(1400f), new Vec3(1, 1, 1)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<Block> ETHEREAL_PLATING = registerBlock("ethereal_plating",
             () -> new Block(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
@@ -50,17 +56,15 @@ public class ModBlocks
             () -> new Block(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
                     .strength(5f).requiresCorrectToolForDrops().explosionResistance(1400f).sound(ModSounds.ETHEREAL_PLATING)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
-    public static ToIntFunction<BlockState> lightLevel = BlockState -> 15;
-
     public static final RegistryObject<Block> ETHEREAL_TORCH = BLOCKS.register("ethereal_torch",
-            () -> new EtherealTorchBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().lightLevel((p_50886_) -> {return 15; })
-                    .sound(SoundType.WOOD).noCollission(), ParticleTypes.FLAME));
+            () -> new EtherealTorchBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().lightLevel((state) -> {return 15; })
+                    .sound(SoundType.WOOD).noCollission(), ETHEREAL_FLAME_PARTICLES.get()));
 
     public static final RegistryObject<Block> ETHEREAL_WALL_TORCH = BLOCKS.register("ethereal_wall_torch",
-            () -> new EtherealWallTorchBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().lightLevel((p_50886_) -> {return 15; })
-                    .sound(SoundType.WOOD).noCollission(), ParticleTypes.FLAME));
+            () -> new EtherealWallTorchBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().lightLevel((state) -> {return 15; })
+                    .sound(SoundType.WOOD).noCollission(), ETHEREAL_FLAME_PARTICLES.get()));
 
-    public static final RegistryObject<Block> ETHEREAL_SPIKE = BLOCKS.register("ethereal_spike",
+    public static final RegistryObject<Block> SAP_TRAP = BLOCKS.register("sap_trap",
             () -> new SapTrapBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
                     .strength(7f).requiresCorrectToolForDrops().explosionResistance(1400f).sound(ModSounds.ETHEREAL_PLATING).noCollission().noOcclusion()));
 
@@ -72,7 +76,7 @@ public class ModBlocks
 
     public static final RegistryObject<Block> NECROTIC_SAP_BLOCK = registerBlock("necrotic_sap_block",
             () -> new NecroticSapBlock(BlockBehaviour.Properties.of(Material.GLASS)
-                    .strength(4f).requiresCorrectToolForDrops().noOcclusion().noCollission().sound(SoundType.WART_BLOCK).explosionResistance(500f), new Vec3(0.5D, 0.5D, 0.5D)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+                    .strength(3f).requiresCorrectToolForDrops().noOcclusion().noCollission().sound(SoundType.WART_BLOCK).explosionResistance(500f), new Vec3(0.5D, 0.5D, 0.5D)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<Block> SHARPSHOOTER = registerBlock("sharpshooter",
             () -> new SharpshooterBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
@@ -82,11 +86,11 @@ public class ModBlocks
 
     public static final RegistryObject<Block> VERDANT_SAP_BLOCK = registerBlock("verdant_sap_block",
             () -> new SapBlock(BlockBehaviour.Properties.of(Material.GLASS)
-                    .strength(4f).requiresCorrectToolForDrops().noOcclusion().noCollission().sound(SoundType.HONEY_BLOCK), new Vec3(0.25D, 0.25D, 0.25D)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+                    .strength(3f).requiresCorrectToolForDrops().noOcclusion().noCollission().sound(SoundType.HONEY_BLOCK), new Vec3(0.25D, 0.25D, 0.25D)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<Block> AMBER_BLOCK = registerBlock("amber_block",
             () -> new AmberBlock(BlockBehaviour.Properties.of(Material.GLASS)
-                    .strength(4f).noOcclusion().sound(SoundType.STONE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+                    .strength(2f).noOcclusion().sound(SoundType.STONE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<Block> SCULK_HUSK = registerBlock("sculk_husk", () -> new SculkHuskBlock(BlockBehaviour.Properties.of(Material.SCULK)
             .strength(0.5f).sound(SoundType.SCULK)),
@@ -152,6 +156,13 @@ public class ModBlocks
     public static final RegistryObject<Block> TREATED_DOOR = registerBlock("treated_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(TREATED_PLANKS.get()).noOcclusion()), CreativeModeTab.TAB_REDSTONE);
     public static final RegistryObject<Block> TREATED_TRAPDOOR = registerBlock("treated_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(TREATED_PLANKS.get()).noOcclusion()), CreativeModeTab.TAB_REDSTONE);
 
+    public static final RegistryObject<Block> SHEEN_BLOOM = registerBlock("sheen_bloom", () -> new SheenBloomBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel((state) -> 4).offsetType(BlockBehaviour.OffsetType.XZ)), CreativeModeTab.TAB_DECORATIONS);
+
+    public static final RegistryObject<Block> GILDBLOSSOM = registerBlock("gildblossom",
+            () -> new FlowerBlock(MobEffects.GLOWING, 4, BlockBehaviour.Properties.copy(Blocks.POPPY)), CreativeModeTab.TAB_DECORATIONS);
+
+    public static final RegistryObject<Block> POTTED_GILDBLOSSOM = BLOCKS.register("potted_gildblossom",
+            () -> new FlowerPotBlock(() -> ((FlowerPotBlock) Blocks.FLOWER_POT), ModBlocks.GILDBLOSSOM, BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab)
     {

@@ -30,7 +30,7 @@ public class ElderWoodBlock extends ModFlammableRotatedPillarBlock
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
 
         if (state.getValue(NATURAL) && IFairy.playerGetAggressor(player) != null){
-            IFairy.playerGetAggressor(player).setHurtOak(true);
+            IFairy.playerGetAggressor(player).addHurtOak(1);
         }
 
         return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);

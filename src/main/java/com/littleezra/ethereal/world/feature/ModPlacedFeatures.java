@@ -2,6 +2,7 @@ package com.littleezra.ethereal.world.feature;
 
 import com.littleezra.ethereal.Ethereal;
 import net.minecraft.core.Registry;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -18,11 +19,13 @@ public class ModPlacedFeatures {
 
     // Placed Features
 
-    public static final RegistryObject<PlacedFeature> ETHEREAL_SAP_PLACED = PLACED_FEATURES.register("ethereal_sap_placed",
-            () -> new PlacedFeature(ModConfiguredFeatures.ETHEREAL_SAP.getHolder().get(),
-                    commonOrePlacement(7, //Veins per Chunk
-                    HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-80), VerticalAnchor.absolute(30)))));
+    public static final RegistryObject<PlacedFeature> GILDBLOSSOM_PLACED = PLACED_FEATURES.register("gildblossom_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.GILDBLOSSOM.getHolder().get(), List.of(RarityFilter.onAverageOnceEvery(16),
+                    InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
 
+    public static final RegistryObject<PlacedFeature> ETHEREAL_STAR_PLACED = PLACED_FEATURES.register("ethereal_star_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.ETHEREAL_STAR.getHolder().get(), List.of(RarityFilter.onAverageOnceEvery(7),
+                    HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(5), VerticalAnchor.absolute(15)), BiomeFilter.biome())));
 
     public static void register(IEventBus eventBus){
         PLACED_FEATURES.register(eventBus);

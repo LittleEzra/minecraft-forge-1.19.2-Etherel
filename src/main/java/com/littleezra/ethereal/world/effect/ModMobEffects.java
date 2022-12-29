@@ -29,6 +29,9 @@ public class ModMobEffects {
     public static final RegistryObject<MobEffect> ELDER_OAK_CURSE = MOB_EFFECTS.register("elder_oak_curse", () ->
             new ElderOakCurseEffect(MobEffectCategory.HARMFUL, getColor("#884ddb")));
 
+    public static final RegistryObject<MobEffect> TACIT_MOUTH = MOB_EFFECTS.register("stifled_mouth", () ->
+            new StifledMouthEffect(MobEffectCategory.HARMFUL, getColor("#884ddb")));
+
     public static void register(IEventBus eventBus){
         MOB_EFFECTS.register(eventBus);
     }
