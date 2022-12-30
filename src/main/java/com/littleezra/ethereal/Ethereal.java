@@ -81,6 +81,7 @@ public class Ethereal
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        Ethereal.PrintDebug("FMLCommonSetupEvent triggered");
         event.enqueueWork(() ->{
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.GILDBLOSSOM.getId(), ModBlocks.POTTED_GILDBLOSSOM);
             SpawnPlacements.register(ModEntityTypes.CNITHEREA.get(), SpawnPlacements.Type.NO_RESTRICTIONS,
@@ -90,6 +91,10 @@ public class Ethereal
             FAIRY_AGGRESSOR = CriteriaTriggers.register(new FairyAggressorTrigger());
             CNITHEREA_BOUNCE = CriteriaTriggers.register(new CnithereaBounceTrigger());
         });
+    }
+
+    public static void PrintDebug(String line){
+        System.out.println("[Ethereal Mod Debug] " + line);
     }
 
     public static ServerPlayer getServerPlayer(Player player){

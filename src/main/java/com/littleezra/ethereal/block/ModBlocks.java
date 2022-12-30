@@ -58,11 +58,11 @@ public class ModBlocks
 
     public static final RegistryObject<Block> ETHEREAL_TORCH = BLOCKS.register("ethereal_torch",
             () -> new EtherealTorchBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().lightLevel((state) -> {return 15; })
-                    .sound(SoundType.WOOD).noCollission(), ETHEREAL_FLAME_PARTICLES.get()));
+                    .sound(SoundType.WOOD).noCollission(), ETHEREAL_FLAME_PARTICLES));
 
     public static final RegistryObject<Block> ETHEREAL_WALL_TORCH = BLOCKS.register("ethereal_wall_torch",
             () -> new EtherealWallTorchBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().lightLevel((state) -> {return 15; })
-                    .sound(SoundType.WOOD).noCollission(), ETHEREAL_FLAME_PARTICLES.get()));
+                    .sound(SoundType.WOOD).noCollission(), ETHEREAL_FLAME_PARTICLES));
 
     public static final RegistryObject<Block> SAP_TRAP = BLOCKS.register("sap_trap",
             () -> new SapTrapBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
@@ -155,6 +155,9 @@ public class ModBlocks
 
     public static final RegistryObject<Block> TREATED_DOOR = registerBlock("treated_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(TREATED_PLANKS.get()).noOcclusion()), CreativeModeTab.TAB_REDSTONE);
     public static final RegistryObject<Block> TREATED_TRAPDOOR = registerBlock("treated_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(TREATED_PLANKS.get()).noOcclusion()), CreativeModeTab.TAB_REDSTONE);
+
+    public static final RegistryObject<Block> RICH_BUTTON = registerBlock("rich_button", () -> new WoodButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD)), CreativeModeTab.TAB_REDSTONE);
+    public static final RegistryObject<Block> TREATED_BUTTON = registerBlock("treated_button", () -> new WoodButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.5F).sound(SoundType.WOOD)), CreativeModeTab.TAB_REDSTONE);
 
     public static final RegistryObject<Block> SHEEN_BLOOM = registerBlock("sheen_bloom", () -> new SheenBloomBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel((state) -> 4).offsetType(BlockBehaviour.OffsetType.XZ)), CreativeModeTab.TAB_DECORATIONS);
 

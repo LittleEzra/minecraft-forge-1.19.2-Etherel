@@ -168,6 +168,7 @@ public class ModEvents {
         @SubscribeEvent
         public static void entityAttributeEvent(EntityAttributeCreationEvent event)
         {
+            Ethereal.PrintDebug("EntityAttributeCreationEvent triggered");
             event.put(ModEntityTypes.CNITHEREA.get(), Cnitherea.setAttributes());
             event.put(ModEntityTypes.TOTEM_GOLEM.get(), TotemGolem.setAttributes());
             event.put(ModEntityTypes.FAIRYFLY.get(), Fairyfly.setAttributes());

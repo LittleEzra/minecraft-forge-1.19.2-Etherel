@@ -20,7 +20,7 @@ public class ClientEvents {
     public static class ClientModEvents{
         @SubscribeEvent
         public static void registerParticleProviders(RegisterParticleProvidersEvent event){
-            System.out.println("Registering Particle Factories");
+            Ethereal.PrintDebug("RegisterParticleProvidersEvent triggered");
             event.register(ModParticles.ETHEREAL_FLAME.get(), EtherealFlameParticle.Provider::new);
         }
     }
